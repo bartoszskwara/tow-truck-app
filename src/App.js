@@ -1,10 +1,14 @@
+import { BrowserRouter } from 'react-router-dom';
+import Layout from 'pages/Layout';
 import ThemeProvider from 'providers/Theme';
 
 const App = () => {
     return (
-        <ThemeProvider>
-            <div className="App">Tow Truck App</div>
-        </ThemeProvider>
+        <BrowserRouter>
+            <ThemeProvider>
+                <Layout />
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 
