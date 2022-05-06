@@ -1,5 +1,11 @@
+import ThemeProvider from 'providers/Theme';
+
 const App = () => {
-    return <div className="App">Tow Truck App</div>;
+    return (
+        <ThemeProvider>
+            <div className="App">Tow Truck App</div>
+        </ThemeProvider>
+    );
 };
 
 export default App;
