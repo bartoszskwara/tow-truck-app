@@ -7,15 +7,23 @@ const makeThemeBasics = (mode = 'dark') =>
             mode,
             ...(mode === 'light'
                 ? {
-                      primary: {
-                          main: '#1B283A',
-                          contrastText: '#FFFFFF',
+                      text: {
+                          primary: '#1A1A1A',
+                          secondary: '#848484',
+                      },
+                      background: {
+                          primary: '#FFFFFF',
+                          secondary: '#F2F2F2',
                       },
                   }
                 : {
-                      primary: {
-                          main: '#1B283A',
-                          contrastText: '#FFFFFF',
+                      text: {
+                          primary: '#FFFFFF',
+                          secondary: '#848484',
+                      },
+                      background: {
+                          primary: '#000000',
+                          secondary: '#212121',
                       },
                   }),
         },
@@ -24,13 +32,17 @@ const makeThemeBasics = (mode = 'dark') =>
 const makeThemeTypography = (theme) => {
     return createTheme(theme, {
         typography: {
-            header: {
-                fontFamily: 'sans-serif',
-                fontSize: theme.spacing(2),
+            light: {
+                fontFamily: 'OpenSansRegular',
+                fontSize: theme.spacing(1.4),
             },
             regular: {
-                fontFamily: 'sans-serif',
-                fontSize: theme.spacing(1.6),
+                fontFamily: 'OpenSansSemiBold',
+                fontSize: theme.spacing(1.4),
+            },
+            bold: {
+                fontFamily: 'OpenSansBold',
+                fontSize: theme.spacing(1.4),
             },
         },
     });

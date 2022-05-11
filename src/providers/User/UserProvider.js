@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import reducer from './reducer';
 
 const initialState = {
-    token: '',
+    preferences: {
+        theme: 'light',
+        language: 'en',
+    },
 };
 
-const AuthContext = React.createContext({});
+const UserContext = React.createContext({});
 
-const AuthProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const value = {
@@ -17,14 +20,14 @@ const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+        <UserContext.Provider value={value}>{children}</UserContext.Provider>
     );
 };
 
-AuthProvider.propTypes = {
+UserProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-export default AuthProvider;
+export default UserProvider;
 
-export { AuthContext };
+export { UserContext };

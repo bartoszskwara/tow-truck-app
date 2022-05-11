@@ -1,3 +1,20 @@
-body {
-  margin: 0;
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: OpenSansSemiBold;
+}
+
+@font-face {
+    font-family: 'OpenSansSemiBold';
+    src: local('OpenSansSemiBold'), url(/src/assets/fonts/OpenSans-SemiBold.ttf) format('woff');
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: local('OpenSansBold'), url(/src/assets/fonts/OpenSans-Bold.ttf) format('woff');
+}
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: local('OpenSansRegular'), url(/src/assets/fonts/OpenSans-Regular.ttf) format('woff');
 }
