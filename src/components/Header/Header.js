@@ -28,24 +28,12 @@ const Header = () => {
                 background: (theme) => theme.palette.background.primary,
             }}
         >
-            <Logo
-                src={logo}
-                companyName={companyName}
-                sx={{
-                    flex: 2,
-                }}
-            />
-            <Navigation
-                sx={{
-                    flex: 1,
-                }}
-            />
+            <Logo src={logo} companyName={companyName} sx={{ flex: 2 }} />
+            <Navigation sx={{ flex: 1 }} />
             <ActionButtons
                 newMessages={newMessages}
                 newNotifications={newNotifications}
-                sx={{
-                    flex: 1,
-                }}
+                sx={{ flex: 1 }}
             />
         </Box>
     );

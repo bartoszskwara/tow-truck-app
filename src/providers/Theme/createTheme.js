@@ -15,6 +15,14 @@ const makeThemeBasics = (mode = 'dark') =>
                           primary: '#FFFFFF',
                           secondary: '#F2F2F2',
                       },
+                      info: {
+                          main: '#0091CF',
+                          contrastText: '#FFFFFF',
+                      },
+                      border: {
+                          default: '#C4C4C4',
+                          dark: '#1A1A1A',
+                      },
                   }
                 : {
                       text: {
@@ -24,6 +32,14 @@ const makeThemeBasics = (mode = 'dark') =>
                       background: {
                           primary: '#000000',
                           secondary: '#212121',
+                      },
+                      info: {
+                          main: '#0091CF',
+                          contrastText: '#FFFFFF',
+                      },
+                      border: {
+                          default: '#C4C4C4',
+                          dark: '#FFFFFF',
                       },
                   }),
         },
@@ -51,6 +67,19 @@ const makeThemeTypography = (theme) => {
 export default (mode = 'dark') => {
     const theme = makeThemeTypography(makeThemeBasics(mode));
     return createTheme(theme, {
-        components: {},
+        components: {
+            MuiBadge: {
+                styleOverrides: {
+                    colorInfo: {
+                        width: theme.spacing(1.5),
+                        minWidth: theme.spacing(1.5),
+                        height: theme.spacing(1.5),
+                        fontSize: theme.spacing(1.1),
+                        bottom: theme.spacing(0.3),
+                        right: theme.spacing(0.3),
+                    },
+                },
+            },
+        },
     });
 };

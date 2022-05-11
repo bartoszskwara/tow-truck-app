@@ -2,24 +2,45 @@ import PropTypes from 'prop-types';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Badge, Box, IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Badge from './Badge';
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    marginLeft: theme.spacing(2),
+}));
 
 const ActionButtons = ({ newMessages, newNotifications, sx }) => {
     return (
-        <Box sx={sx}>
-            <IconButton aria-label="messages">
-                <Badge badgeContent={newMessages} color="primary">
-                    <MessageIcon />
+        <Box
+            sx={[
+                {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                },
+                ...(Array.isArray(sx) ? sx : [sx]),
+            ]}
+        >
+            <StyledIconButton aria-label="messages">
+                <Badge badgeContent={newMessages}>
+                    <MessageIcon
+                        sx={{ color: (theme) => theme.palette.text.primary }}
+                    />
                 </Badge>
-            </IconButton>
-            <IconButton aria-label="notifications">
-                <Badge badgeContent={newNotifications} color="primary">
-                    <NotificationsIcon />
+            </StyledIconButton>
+            <StyledIconButton aria-label="notifications">
+                <Badge badgeContent={newNotifications}>
+                    <NotificationsIcon
+                        sx={{ color: (theme) => theme.palette.text.primary }}
+                    />
                 </Badge>
-            </IconButton>
-            <IconButton aria-label="account">
-                <AccountCircleIcon />
-            </IconButton>
+            </StyledIconButton>
+            <StyledIconButton aria-label="account">
+                <AccountCircleIcon
+                    sx={{ color: (theme) => theme.palette.text.primary }}
+                />
+            </StyledIconButton>
         </Box>
     );
 };

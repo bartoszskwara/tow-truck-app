@@ -11,7 +11,16 @@ const Logo = ({ src, companyName, sx }) => (
             ...(Array.isArray(sx) ? sx : [sx]),
         ]}
     >
-        <Avatar src={src} />
+        <Avatar
+            src={src}
+            sx={{
+                width: (theme) => theme.spacing(3.2),
+                height: (theme) => theme.spacing(3.2),
+                padding: (theme) => theme.spacing(0.5),
+                border: (theme) =>
+                    `${theme.spacing(0.1)} solid ${theme.palette.border.dark}`,
+            }}
+        />
         <Box
             sx={{
                 textTransform: 'uppercase',

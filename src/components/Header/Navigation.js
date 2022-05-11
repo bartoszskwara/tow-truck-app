@@ -8,7 +8,9 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
     textDecoration: 'none',
     color: theme.palette.text.primary,
 }));
-const StyledText = styled(Text)(({ theme, active }) => ({
+const StyledText = styled(Text, {
+    shouldForwardProp: (propName) => propName !== 'active',
+})(({ theme, active }) => ({
     fontSize: theme.spacing(1.6),
     marginRight: theme.spacing(6),
     ...(!active ? { color: theme.palette.text.secondary } : {}),
@@ -32,7 +34,6 @@ const Navigation = ({ sx }) => {
                     <StyledText
                         text="Home"
                         name="NavigationHome"
-                        //variant={isActive ? 'bold' : 'light'}
                         active={isActive}
                     />
                 )}
@@ -42,7 +43,6 @@ const Navigation = ({ sx }) => {
                     <StyledText
                         text="Stations"
                         name="NavigationStations"
-                        //variant={isActive ? 'bold' : 'light'}
                         active={isActive}
                     />
                 )}
@@ -52,7 +52,6 @@ const Navigation = ({ sx }) => {
                     <StyledText
                         text="Settings"
                         name="NavigationSettings"
-                        //variant={isActive ? 'bold' : 'light'}
                         active={isActive}
                     />
                 )}
