@@ -28,13 +28,25 @@ const Header = () => {
                 background: (theme) => theme.palette.background.primary,
             }}
         >
-            <Logo src={logo} companyName={companyName} sx={{ flex: 2 }} />
-            <Navigation sx={{ flex: 1 }} />
-            <ActionButtons
-                newMessages={newMessages}
-                newNotifications={newNotifications}
-                sx={{ flex: 1 }}
+            <Logo
+                src={logo}
+                companyName={companyName}
+                sx={{ flex: 1.5, marginRight: (theme) => theme.spacing(1.5) }}
             />
+            <Box
+                sx={{
+                    flex: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                }}
+            >
+                <Navigation />
+                <ActionButtons
+                    newMessages={newMessages}
+                    newNotifications={newNotifications}
+                />
+            </Box>
         </Box>
     );
 };
