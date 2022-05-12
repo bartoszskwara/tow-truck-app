@@ -22,7 +22,7 @@ const Text = ({ text, name, ...rest }) => {
 };
 
 Text.propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
 };
 

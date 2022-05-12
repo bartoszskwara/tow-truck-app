@@ -20,4 +20,25 @@ export default [
             en: 'Settings',
         },
     },
+    {
+        name: 'AccidentsHandled',
+        translations: {
+            pl: 'obsłużone wypadki',
+            en: 'accidents handled',
+        },
+    },
+    {
+        name: 'MilesOfTowing',
+        translations: {
+            pl: 'mil holowania',
+            en: 'miles of towing',
+        },
+    },
+    {
+        name: 'TrucksAvailable',
+        translations: {
+            pl: 'dostępnych lawet',
+            en: 'trucks available',
+        },
+    },
 ];

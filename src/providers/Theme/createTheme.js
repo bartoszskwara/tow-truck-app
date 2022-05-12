@@ -23,6 +23,9 @@ const makeThemeBasics = (mode = 'dark') =>
                           default: '#C4C4C4',
                           dark: '#1A1A1A',
                       },
+                      warning: {
+                          main: '#DA6757',
+                      },
                   }
                 : {
                       text: {
@@ -40,6 +43,9 @@ const makeThemeBasics = (mode = 'dark') =>
                       border: {
                           default: '#C4C4C4',
                           dark: '#FFFFFF',
+                      },
+                      warning: {
+                          main: '#DA6757',
                       },
                   }),
         },
@@ -77,6 +83,19 @@ export default (mode = 'dark') => {
                         fontSize: theme.spacing(1.1),
                         bottom: theme.spacing(0.3),
                         right: theme.spacing(0.3),
+                    },
+                },
+            },
+            MuiPaper: {
+                styleOverrides: {
+                    elevation0: {
+                        border: `1px solid ${theme.palette.border.default}`,
+                        borderRadius: theme.spacing(1),
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: theme.spacing(2.5)
                     },
                 },
             },

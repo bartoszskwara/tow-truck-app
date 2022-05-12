@@ -1,0 +1,17 @@
+{
+  "stats": [
+    {
+      "value": 236,
+      "type": "accidents"
+    },
+    {
+      "value": 12756,
+      "type": "towing"
+    },
+    {
+      "available": 2,
+      "all": 7,
+      "type": "trucks"
+    }
+  ]
+}
