@@ -42,7 +42,7 @@ const Stats = () => {
     }, []);
 
     return (
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
             {stats.map((i) => {
                 const createValue = valueCreators[i.type];
                 return (

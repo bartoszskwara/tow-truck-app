@@ -41,4 +41,18 @@ export default [
             en: 'trucks available',
         },
     },
+    {
+        name: 'ChatStations',
+        translations: {
+            pl: 'Stacje',
+            en: 'Stations',
+        },
+    },
+    {
+        name: 'ChatDrivers',
+        translations: {
+            pl: 'Kierowcy',
+            en: 'Drivers',
+        },
+    },
 ];

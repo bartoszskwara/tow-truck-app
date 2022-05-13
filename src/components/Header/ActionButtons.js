@@ -8,8 +8,7 @@ import Badge from './Badge';
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
     marginLeft: theme.spacing(2),
-    padding: 0,
-    paddingLeft: theme.spacing(1),
+    padding: theme.spacing(1),
 }));
 
 const ActionButtons = ({ newMessages, newNotifications, sx }) => {

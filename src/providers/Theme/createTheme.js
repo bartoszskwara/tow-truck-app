@@ -10,10 +10,12 @@ const makeThemeBasics = (mode = 'dark') =>
                       text: {
                           primary: '#1A1A1A',
                           secondary: '#848484',
+                          contrastText: '#FFFFFF',
                       },
                       background: {
                           primary: '#FFFFFF',
                           secondary: '#F2F2F2',
+                          accent: '#1A1A1A',
                       },
                       info: {
                           main: '#0091CF',
@@ -21,20 +23,33 @@ const makeThemeBasics = (mode = 'dark') =>
                       },
                       border: {
                           default: '#C4C4C4',
-                          dark: '#1A1A1A',
+                          contrast: '#1A1A1A',
+                          contrastInverted: '#FFFFFF',
                       },
                       warning: {
                           main: '#DA6757',
+                          contrastText: '#FFFFFF',
+                      },
+                      accent: {
+                          main: '#6AC2B3',
+                          light: '#45BD4A',
+                          contrastText: '#FFFFFF',
+                      },
+                      gray: {
+                          50: '#E5E5E5',
+                          100: '#848484',
                       },
                   }
                 : {
                       text: {
                           primary: '#FFFFFF',
                           secondary: '#848484',
+                          contrastText: '#1A1A1A',
                       },
                       background: {
                           primary: '#000000',
                           secondary: '#212121',
+                          accent: '#FFFFFF',
                       },
                       info: {
                           main: '#0091CF',
@@ -46,6 +61,16 @@ const makeThemeBasics = (mode = 'dark') =>
                       },
                       warning: {
                           main: '#DA6757',
+                          contrastText: '#FFFFFF',
+                      },
+                      accent: {
+                          main: '#6AC2B3',
+                          light: '#45BD4A',
+                          contrastText: '#FFFFFF',
+                      },
+                      gray: {
+                          50: '#E5E5E5',
+                          100: '#848484',
                       },
                   }),
         },
@@ -95,7 +120,7 @@ export default (mode = 'dark') => {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        padding: theme.spacing(2.5)
+                        padding: theme.spacing(2.5),
                     },
                 },
             },

@@ -8,19 +8,14 @@ const Dashboard = () => (
     <Box
         sx={{
             display: 'flex',
+            flex: 1,
             flexDirection: 'row',
-            padding: (theme) => `
-                    ${theme.spacing(2)}
-                    ${theme.spacing(4)}
-                    ${theme.spacing(1)}
-                    ${theme.spacing(6)}
-                `,
+            gap: (theme) => theme.spacing(2.5),
         }}
     >
         <Accidents
             sx={{
                 flex: 1.5,
-                marginRight: (theme) => theme.spacing(1.5),
             }}
         />
         <Box
@@ -29,12 +24,14 @@ const Dashboard = () => (
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 flex: 2,
+                gap: (theme) => theme.spacing(2.5),
             }}
         >
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
+                    flex: 1,
                 }}
             >
                 <Stats />

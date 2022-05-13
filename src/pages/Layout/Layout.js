@@ -24,15 +24,31 @@ const Layout = () => {
             sx={{
                 background: (theme) => theme.palette.background.secondary,
                 flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
             }}
         >
             {isAuthenticated && <Header />}
-            <Routes>
-                <Route index element={<IndexElement />} />
-                <Route path="/stations" element={<Stations />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="*" element={<Navigate replace to="" />} />
-            </Routes>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flex: 1,
+                    flexDirection: 'row',
+                    padding: (theme) => `
+                    ${theme.spacing(2)}
+                    ${theme.spacing(4)}
+                    ${theme.spacing(1)}
+                    ${theme.spacing(6)}
+                `,
+                }}
+            >
+                <Routes>
+                    <Route index element={<IndexElement />} />
+                    <Route path="/stations" element={<Stations />} />
+                    <Route path="/settings" element={<Settings />} />
+                    <Route path="*" element={<Navigate replace to="" />} />
+                </Routes>
+            </Box>
         </Box>
     );
 };

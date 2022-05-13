@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
 import { useUser } from 'hooks';
-import labels from './labels';
+import labels from 'assets/labels';
 
 const Text = ({ text, name, ...rest }) => {
     const {
@@ -22,7 +22,11 @@ const Text = ({ text, name, ...rest }) => {
 };
 
 Text.propTypes = {
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    text: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.node,
+    ]),
     name: PropTypes.string,
 };
 

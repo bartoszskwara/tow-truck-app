@@ -18,7 +18,7 @@ const Logo = ({ src, companyName, sx }) => (
                 height: (theme) => theme.spacing(3.2),
                 padding: (theme) => theme.spacing(0.5),
                 border: (theme) =>
-                    `${theme.spacing(0.1)} solid ${theme.palette.border.dark}`,
+                    `${theme.spacing(0.1)} solid ${theme.palette.border.contrast}`,
             }}
         />
         <Box

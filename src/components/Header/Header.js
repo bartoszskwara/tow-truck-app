@@ -31,7 +31,7 @@ const Header = () => {
             <Logo
                 src={logo}
                 companyName={companyName}
-                sx={{ flex: 1.5, marginRight: (theme) => theme.spacing(1.5) }}
+                sx={{ flex: 1.5, marginRight: (theme) => theme.spacing(2.5) }}
             />
             <Box
                 sx={{
