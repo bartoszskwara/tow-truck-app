@@ -25,11 +25,11 @@ const BadgeAvatar = ({ name, src, status, notifications }) => {
             sx={{
                 '& > .MuiBadge-badge': {
                     background: (theme) => getStatusBgColor(status, theme),
-                    bottom: status === 'driving' ? 0 : 5,
+                    bottom: status === 'driving' ? 0 : 7,
                     ...(status === 'driving'
                         ? { borderRadius: (theme) => theme.spacing(0.5) }
                         : {}),
-                    right: 5,
+                    right: status === 'driving' ? 0 : 7,
                     minWidth: (theme) => theme.spacing(1.5),
                     height: (theme) => theme.spacing(1.5),
                     fontSize: (theme) => theme.spacing(1),
@@ -46,8 +46,8 @@ const BadgeAvatar = ({ name, src, status, notifications }) => {
                 sx={{
                     '& > .MuiBadge-badge': {
                         background: (theme) => theme.palette.info.main,
-                        top: 5,
-                        right: 5,
+                        top: 7,
+                        right: 7,
                         minWidth: (theme) => theme.spacing(1.5),
                         width: (theme) => theme.spacing(1.5),
                         height: (theme) => theme.spacing(1.5),
