@@ -14,61 +14,61 @@ const getStatusBgColor = (status, theme) => {
     }
 };
 
-const BadgeAvatar = ({ name, src, status, notifications }) => {
-    return (
+const BadgeAvatar = ({ name, src, status, notifications }) => (
+    <Badge
+        badgeContent={status === 'driving' ? 'DRIVING' : ' '}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+        }}
+        sx={{
+            '& > .MuiBadge-badge': {
+                background: (theme) => getStatusBgColor(status, theme),
+                bottom: status === 'driving' ? 0 : 7,
+                ...(status === 'driving'
+                    ? {
+                          borderRadius: (theme) => theme.spacing(0.5),
+                          transform: 'translate(0, 0)',
+                      }
+                    : {}),
+                right: status === 'driving' ? 0 : 7,
+                minWidth: (theme) => theme.spacing(1.5),
+                height: (theme) => theme.spacing(1.5),
+                fontSize: (theme) => theme.spacing(1),
+            },
+        }}
+    >
         <Badge
-            badgeContent={status === 'driving' ? 'DRIVING' : ' '}
+            badgeContent={notifications}
             anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: status === 'driving' ? 'middle' : 'right',
+                vertical: 'top',
+                horizontal: 'right',
             }}
             sx={{
                 '& > .MuiBadge-badge': {
-                    background: (theme) => getStatusBgColor(status, theme),
-                    bottom: status === 'driving' ? 0 : 7,
-                    ...(status === 'driving'
-                        ? { borderRadius: (theme) => theme.spacing(0.5) }
-                        : {}),
-                    right: status === 'driving' ? 0 : 7,
+                    background: (theme) => theme.palette.info.main,
+                    top: 7,
+                    right: 7,
                     minWidth: (theme) => theme.spacing(1.5),
+                    width: (theme) => theme.spacing(1.5),
                     height: (theme) => theme.spacing(1.5),
                     fontSize: (theme) => theme.spacing(1),
                 },
             }}
         >
-            <Badge
-                badgeContent={notifications}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                badgeColor={(theme) => theme.palette.info.main}
+            <Avatar
+                src={src}
+                alt={name}
                 sx={{
-                    '& > .MuiBadge-badge': {
-                        background: (theme) => theme.palette.info.main,
-                        top: 7,
-                        right: 7,
-                        minWidth: (theme) => theme.spacing(1.5),
-                        width: (theme) => theme.spacing(1.5),
-                        height: (theme) => theme.spacing(1.5),
-                        fontSize: (theme) => theme.spacing(1),
-                    },
+                    width: (theme) => theme.spacing(5.5),
+                    height: (theme) => theme.spacing(5.5),
+                    border: (theme) =>
+                        `2px solid ${theme.palette.border.contrastInverted}`,
                 }}
-            >
-                <Avatar
-                    src={src}
-                    alt={name}
-                    sx={{
-                        width: (theme) => theme.spacing(5.5),
-                        height: (theme) => theme.spacing(5.5),
-                        border: (theme) =>
-                            `2px solid ${theme.palette.border.contrastInverted}`,
-                    }}
-                />
-            </Badge>
+            />
         </Badge>
-    );
-};
+    </Badge>
+);
 
 BadgeAvatar.propTypes = {
     name: PropTypes.string,

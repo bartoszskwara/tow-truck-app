@@ -13,11 +13,10 @@ const Chat = () => {
 
     useEffect(() => {
         const fetchRecentChats = async () => {
-            const response = await fetch('./recentChats.json').then((res) =>
-                res.json()
+            const response = await fetch('./mockApi/recentChats.json').then(
+                (res) => res.json()
             );
             if (response) {
-                console.log(response.chats);
                 setRecentChats(response.chats);
             }
         };
@@ -38,7 +37,7 @@ const Chat = () => {
                     items={station}
                     label={{ text: 'Stations', name: 'ChatStations' }}
                     sx={{
-                        marginBottom: (theme) => theme.spacing(2)
+                        marginBottom: (theme) => theme.spacing(2),
                     }}
                 />
             )}

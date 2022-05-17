@@ -55,4 +55,88 @@ export default [
             en: 'Drivers',
         },
     },
+    {
+        name: 'MostRecentAccident',
+        translations: {
+            pl: 'Ostatni wypadek',
+            en: 'Most recent accident',
+        },
+    },
+    {
+        name: 'LastUpdate',
+        translations: {
+            pl: 'ostatnia aktualizacja: {}',
+            en: 'last update: {}',
+        },
+    },
+    {
+        name: 'Miles',
+        translations: {
+            pl: '{} mil',
+            en: '{} miles',
+        },
+    },
+    {
+        name: 'From',
+        translations: {
+            pl: 'z: {}',
+            en: 'from: {}',
+        },
+    },
+    {
+        name: 'MinutesAgo',
+        translations: {
+            pl: '{} minut temu',
+            en: '{} minutes ago',
+        },
+    },
+    {
+        name: 'FastestArrival',
+        translations: {
+            pl: 'najszybsze przybycie: {}',
+            en: 'fastest arrival: {}',
+        },
+    },
+    {
+        name: 'ShowMap',
+        translations: {
+            pl: 'Pokaż mapę',
+            en: 'Show map',
+        },
+    },
+    {
+        name: 'SendTruck',
+        translations: {
+            pl: 'Wyślij lawetę',
+            en: 'Send truck',
+        },
+    },
+    {
+        name: 'MilesAway',
+        translations: {
+            pl: '{} mil stąd',
+            en: '{} miles away',
+        },
+    },
+    {
+        name: 'in_progress',
+        translations: {
+            pl: 'w trakcie',
+            en: 'in progress',
+        },
+    },
+    {
+        name: 'completed',
+        translations: {
+            pl: 'ukończono',
+            en: 'completed',
+        },
+    },
+    {
+        name: 'missed',
+        translations: {
+            pl: 'pominięto',
+            en: 'missed',
+        },
+    },
 ];

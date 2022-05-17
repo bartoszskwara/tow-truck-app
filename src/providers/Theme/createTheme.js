@@ -1,78 +1,13 @@
 import { createTheme } from '@mui/material/styles';
+import darkTheme from './dark';
+import lightTheme from './light';
 
 const makeThemeBasics = (mode = 'dark') =>
     createTheme({
         spacing: 10,
         palette: {
             mode,
-            ...(mode === 'light'
-                ? {
-                      text: {
-                          primary: '#1A1A1A',
-                          secondary: '#848484',
-                          contrastText: '#FFFFFF',
-                      },
-                      background: {
-                          primary: '#FFFFFF',
-                          secondary: '#F2F2F2',
-                          accent: '#1A1A1A',
-                      },
-                      info: {
-                          main: '#0091CF',
-                          contrastText: '#FFFFFF',
-                      },
-                      border: {
-                          default: '#C4C4C4',
-                          contrast: '#1A1A1A',
-                          contrastInverted: '#FFFFFF',
-                      },
-                      warning: {
-                          main: '#DA6757',
-                          contrastText: '#FFFFFF',
-                      },
-                      accent: {
-                          main: '#6AC2B3',
-                          light: '#45BD4A',
-                          contrastText: '#FFFFFF',
-                      },
-                      gray: {
-                          50: '#E5E5E5',
-                          100: '#848484',
-                      },
-                  }
-                : {
-                      text: {
-                          primary: '#FFFFFF',
-                          secondary: '#848484',
-                          contrastText: '#1A1A1A',
-                      },
-                      background: {
-                          primary: '#000000',
-                          secondary: '#212121',
-                          accent: '#FFFFFF',
-                      },
-                      info: {
-                          main: '#0091CF',
-                          contrastText: '#FFFFFF',
-                      },
-                      border: {
-                          default: '#C4C4C4',
-                          dark: '#FFFFFF',
-                      },
-                      warning: {
-                          main: '#DA6757',
-                          contrastText: '#FFFFFF',
-                      },
-                      accent: {
-                          main: '#6AC2B3',
-                          light: '#45BD4A',
-                          contrastText: '#FFFFFF',
-                      },
-                      gray: {
-                          50: '#E5E5E5',
-                          100: '#848484',
-                      },
-                  }),
+            ...(mode === 'light' ? lightTheme : darkTheme),
         },
     });
 
@@ -122,6 +57,23 @@ export default (mode = 'dark') => {
                         alignItems: 'center',
                         padding: theme.spacing(2.5),
                     },
+                },
+            },
+            MuiButton: {
+                styleOverrides: {
+                    root: {
+                        boxShadow: 'none',
+                        '&:hover': {
+                            boxShadow: 'none',
+                        },
+                    },
+                    textPrimary: {
+                        color: theme.palette.text.primary,
+                        padding: '6px 16px',
+                        '&:hover': {
+                            backgroundColor: theme.palette.gray[0],
+                        },
+                    }
                 },
             },
         },

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
-import { useUser } from 'hooks';
 import labels from 'assets/labels';
+import { useUser } from 'hooks';
 
-const Text = ({ text, name, ...rest }) => {
+const Text = ({ text, name, variables, ...rest }) => {
     const {
         user: {
             preferences: { language },
@@ -12,8 +12,13 @@ const Text = ({ text, name, ...rest }) => {
     } = useUser();
     const translation = useMemo(() => {
         const label = labels.find((l) => l.name === name);
-        return label ? label.translations[language] : null;
-    }, [language, name]);
+        let translatedLabel = label ? label.translations[language] : null;
+        return variables.reduce(
+            (result, current) =>
+                translatedLabel?.replace('{}', current) || null,
+            translatedLabel
+        );
+    }, [language, name, variables]);
     return (
         <Typography variant="regular" {...rest}>
             {translation || text}
@@ -28,6 +33,11 @@ Text.propTypes = {
         PropTypes.node,
     ]),
     name: PropTypes.string,
+    variables: PropTypes.array,
+};
+
+Text.defaultProps = {
+    variables: [],
 };
 
 export default Text;
