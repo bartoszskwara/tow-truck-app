@@ -1,0 +1,123 @@
+{
+  "accidents": [{
+    "id": 2001,
+    "datetime": 1652894498000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 34,
+      "station": {
+        "id": 1,
+        "name": "Happy Truck South"
+      },
+      "time": 9000000
+    },
+    "lastUpdate": 1652894703000,
+    "status": "new"
+  }, {
+    "id": 2002,
+    "datetime": 1652529138000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 76,
+      "station": {
+        "id": 2,
+        "name": "Happy Truck North"
+      },
+      "time": 1800000
+    },
+    "lastUpdate": 1652536338000,
+    "status": "new"
+  }, {
+    "id": 2003,
+    "datetime": 1652523378000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 35,
+      "station": {
+        "id": 2,
+        "name": "Happy Truck North"
+      },
+      "time": 1800000
+    },
+    "lastUpdate": 1652526978000,
+    "status": "in_progress"
+  }, {
+    "id": 2005,
+    "datetime": 1652512578000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 15,
+      "station": {
+        "id": 3,
+        "name": "Happy Truck West"
+      },
+      "time": 2700000
+    },
+    "lastUpdate": 1652526978000,
+    "status": "completed"
+  }, {
+    "id": 2006,
+    "datetime": 1651562178000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 110,
+      "station": {
+        "id": 3,
+        "name": "Happy Truck West"
+      },
+      "time": 2700000
+    },
+    "lastUpdate": 1652526978000,
+    "status": "missed"
+  }, {
+    "id": 2007,
+    "datetime": 1651043778000,
+    "address": {
+      "city": "Houston",
+      "region": "TX",
+      "zipcode": "77026",
+      "street": "Cavalcade St",
+      "country": "United States"
+    },
+    "distance": {
+      "value": 80,
+      "station": {
+        "id": 3,
+        "name": "Happy Truck West"
+      },
+      "time": 2700000
+    },
+    "lastUpdate": 1652526978000,
+    "status": "missed"
+  }]
+}

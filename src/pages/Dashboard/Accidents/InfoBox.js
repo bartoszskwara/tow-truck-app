@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 
-const Address = ({
+const InfoBox = ({
     headerLabel,
     headerValue,
     subtitleLabel,
@@ -32,17 +32,21 @@ const Address = ({
     </Box>
 );
 
-Address.propTypes = {
+InfoBox.propTypes = {
     headerLabel: PropTypes.shape({
         text: PropTypes.string,
         name: PropTypes.string,
     }),
-    headerValue: PropTypes.number,
+    headerValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     subtitleLabel: PropTypes.shape({
         text: PropTypes.string,
         name: PropTypes.string,
     }),
-    subtitleValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    subtitleValue: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.node,
+    ]),
     sx: PropTypes.oneOfType([
         PropTypes.arrayOf(
             PropTypes.oneOfType([
@@ -56,8 +60,8 @@ Address.propTypes = {
     ]),
 };
 
-Address.defaultProps = {
+InfoBox.defaultProps = {
     address: {},
 };
 
-export default Address;
+export default InfoBox;

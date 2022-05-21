@@ -91,6 +91,48 @@ export default [
         },
     },
     {
+        name: 'HoursAgo',
+        translations: {
+            pl: '{} godzin temu',
+            en: '{} hours ago',
+        },
+    },
+    {
+        name: 'DaysAgo',
+        translations: {
+            pl: '{} dni temu',
+            en: '{} days ago',
+        },
+    },
+    {
+        name: 'InMinutes',
+        translations: {
+            pl: 'za {} minut',
+            en: 'in {} minutes',
+        },
+    },
+    {
+        name: 'InHours',
+        translations: {
+            pl: 'za {} godzin',
+            en: 'in {} hours',
+        },
+    },
+    {
+        name: 'InDays',
+        translations: {
+            pl: 'za {} dni',
+            en: 'in {} days',
+        },
+    },
+    {
+        name: 'Now',
+        translations: {
+            pl: 'teraz',
+            en: 'now',
+        },
+    },
+    {
         name: 'FastestArrival',
         translations: {
             pl: 'najszybsze przybycie: {}',

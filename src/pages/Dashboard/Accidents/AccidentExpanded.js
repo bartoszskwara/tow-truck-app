@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
+import { useUser } from 'hooks';
+import getRelativeDateTime from '../../../utilities/getRelativeDateTime';
 import AccidentInfo from './AccidentInfo';
 import Address from './Address';
 
@@ -10,7 +12,14 @@ const AccidentExpanded = ({
     distance,
     lastUpdate,
     mostRecent,
+    status,
 }) => {
+    const {
+        user: {
+            preferences: { language },
+        },
+    } = useUser();
+    const lastUpdateLabel = getRelativeDateTime(lastUpdate, language);
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box>
@@ -45,7 +54,9 @@ const AccidentExpanded = ({
                         <Text
                             text="last update: {}"
                             name="LastUpdate"
-                            variables={[lastUpdate]}
+                            variables={[
+                                <Text key="lastUpdate" {...lastUpdateLabel} />,
+                            ]}
                             variant="light"
                             sx={{
                                 color: (theme) => theme.palette.gray[100],
@@ -61,12 +72,27 @@ const AccidentExpanded = ({
                     marginTop: (theme) => theme.spacing(4),
                 }}
             >
-                <Button sx={{ marginX: (theme) => theme.spacing(2) }}>
+                <Button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        console.log('showing map...');
+                    }}
+                >
                     <Text text="Show map" name="ShowMap" />
                 </Button>
-                <Button variant="contained" color="accent">
-                    <Text text="Send truck" name="SendTruck" />
-                </Button>
+                {status === 'new' && (
+                    <Button
+                        variant="contained"
+                        color="accent"
+                        sx={{ marginLeft: (theme) => theme.spacing(2) }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            console.log('sending truck...');
+                        }}
+                    >
+                        <Text text="Send truck" name="SendTruck" />
+                    </Button>
+                )}
             </Box>
         </Box>
     );
@@ -91,6 +117,7 @@ AccidentExpanded.propTypes = {
     }),
     lastUpdate: PropTypes.number,
     mostRecent: PropTypes.bool,
+    status: PropTypes.string,
 };
 
 AccidentExpanded.defaultProps = {

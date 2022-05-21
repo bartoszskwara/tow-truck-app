@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { Box, Button } from '@mui/material';
-import Text from 'components/Text';
+import { Box } from '@mui/material';
 import AccidentCollapsed from './AccidentCollapsed';
 import AccidentExpanded from './AccidentExpanded';
-import AccidentInfo from './AccidentInfo';
-import Address from './Address';
 import ColorIndicator from './ColorIndicator';
-import InfoBox from './InfoBox';
+
+const A = () => {
+    return <span>Czapka</span>;
+};
 
 const Accident = ({
     id,
@@ -18,46 +18,48 @@ const Accident = ({
     expanded,
     mostRecent,
     onClick,
-}) => {
-    return (
+}) => (
+    <Box
+        sx={(theme) => ({
+            borderRadius: theme.spacing(1),
+            border: `1px solid ${theme.palette.border.default}`,
+            background:
+                status === 'missed'
+                    ? theme.palette.gray[0]
+                    : theme.palette.background.primary,
+            display: 'flex',
+            flexDirection: 'row',
+            marginBottom: theme.spacing(2),
+            ...(!mostRecent ? { cursor: 'pointer' } : {}),
+        })}
+        onClick={onClick}
+    >
+        <ColorIndicator status={status} />
         <Box
             sx={(theme) => ({
-                borderRadius: theme.spacing(1),
-                border: `1px solid ${theme.palette.border.default}`,
-                background: status === 'missed' ? theme.palette.gray[0] : theme.palette.background.primary,
-                display: 'flex',
-                flexDirection: 'row',
-                marginBottom: theme.spacing(2),
-                cursor: 'pointer',
+                flex: 1,
+                padding: theme.spacing(2),
             })}
-            onClick={onClick}
         >
-            <ColorIndicator status={status} />
-            <Box
-                sx={(theme) => ({
-                    flex: 1,
-                    padding: theme.spacing(2),
-                })}
-            >
-                {expanded ? (
-                    <AccidentExpanded
-                        datetime={datetime}
-                        address={address}
-                        distance={distance}
-                        lastUpdate={lastUpdate}
-                        mostRecent={mostRecent}
-                    />
-                ) : (
-                    <AccidentCollapsed
-                        datetime={datetime}
-                        distance={distance}
-                        status={status}
-                    />
-                )}
-            </Box>
+            {expanded ? (
+                <AccidentExpanded
+                    datetime={datetime}
+                    address={address}
+                    distance={distance}
+                    lastUpdate={lastUpdate}
+                    mostRecent={mostRecent}
+                    status={status}
+                />
+            ) : (
+                <AccidentCollapsed
+                    datetime={datetime}
+                    distance={distance}
+                    status={status}
+                />
+            )}
         </Box>
-    );
-};
+    </Box>
+);
 
 Accident.propTypes = {
     id: PropTypes.number,

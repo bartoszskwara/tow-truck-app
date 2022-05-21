@@ -24,30 +24,33 @@ const Chat = () => {
     }, []);
 
     return (
-        <Box
-            sx={(theme) => ({
-                background: theme.palette.background.accent,
-                color: theme.palette.text.contrastText,
-                padding: theme.spacing(2),
-                borderRadius: theme.spacing(1),
-            })}
-        >
-            {station && (
-                <List
-                    items={station}
-                    label={{ text: 'Stations', name: 'ChatStations' }}
-                    sx={{
-                        marginBottom: (theme) => theme.spacing(2),
-                    }}
-                />
-            )}
-            {driver && (
-                <List
-                    items={driver}
-                    label={{ text: 'Drivers', name: 'ChatDrivers' }}
-                />
-            )}
+        <Box>
+            <Box
+                sx={(theme) => ({
+                    background: theme.palette.background.accent,
+                    color: theme.palette.text.contrastText,
+                    padding: theme.spacing(2),
+                    borderRadius: theme.spacing(1),
+                })}
+            >
+                {station && (
+                    <List
+                        items={station}
+                        label={{ text: 'Stations', name: 'ChatStations' }}
+                        sx={{
+                            marginBottom: (theme) => theme.spacing(2),
+                        }}
+                    />
+                )}
+                {driver && (
+                    <List
+                        items={driver}
+                        label={{ text: 'Drivers', name: 'ChatDrivers' }}
+                    />
+                )}
+            </Box>
         </Box>
+
     );
 };
 

@@ -2,9 +2,17 @@ import PropTypes from 'prop-types';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
+import { useUser } from '../../../hooks';
+import getRelativeDateTime from '../../../utilities/getRelativeDateTime';
 import getStatusColor from './getStatusColor';
 
 const AccidentCollapsed = ({ datetime, distance, status }) => {
+    const {
+        user: {
+            preferences: { language },
+        },
+    } = useUser();
+    const dateTimeLabel = getRelativeDateTime(datetime, language);
     return (
         <Box
             sx={{
@@ -15,7 +23,7 @@ const AccidentCollapsed = ({ datetime, distance, status }) => {
             }}
         >
             <Text
-                text={datetime}
+                {...dateTimeLabel}
                 variant="bold"
                 sx={{
                     fontSize: (theme) => theme.spacing(2),
@@ -41,7 +49,14 @@ const AccidentCollapsed = ({ datetime, distance, status }) => {
                     }}
                 />
                 {status === 'new' && (
-                    <Button variant="contained" color="accent">
+                    <Button
+                        variant="contained"
+                        color="accent"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            console.log('sending truck...');
+                        }}
+                    >
                         <ArrowForwardIcon />
                     </Button>
                 )}

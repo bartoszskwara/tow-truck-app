@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import reducer from './reducer';
 
 const initialState = {
-    token: '',
+    token: localStorage.getItem('auth_token'),
 };
 
 const AuthContext = React.createContext({});
