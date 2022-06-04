@@ -140,10 +140,10 @@ export default [
         },
     },
     {
-        name: 'ShowMap',
+        name: 'Locate',
         translations: {
-            pl: 'Pokaż mapę',
-            en: 'Show map',
+            pl: 'Zlokalizuj',
+            en: 'Locate',
         },
     },
     {

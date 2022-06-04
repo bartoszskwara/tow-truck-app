@@ -31,7 +31,7 @@ const Stats = () => {
 
     useEffect(() => {
         const fetchStatistics = async () => {
-            const response = await fetch('./stats.json').then((res) =>
+            const response = await fetch('./mockApi/stats.json').then((res) =>
                 res.json()
             );
             if (response) {

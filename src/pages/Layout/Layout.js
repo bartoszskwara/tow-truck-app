@@ -5,6 +5,7 @@ import useAuth from 'hooks/useAuth';
 import Dashboard from 'pages/Dashboard';
 import Login from 'pages/Login';
 import Settings from 'pages/Settings';
+import Dev from 'pages/Dev';
 import Stations from 'pages/Stations';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -46,6 +47,7 @@ const Layout = () => {
                     <Route index element={<IndexElement />} />
                     <Route path="/stations" element={<Stations />} />
                     <Route path="/settings" element={<Settings />} />
+                    <Route path="/dev" element={<Dev />} />
                     <Route path="*" element={<Navigate replace to="" />} />
                 </Routes>
             </Box>

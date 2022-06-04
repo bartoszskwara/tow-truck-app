@@ -9,7 +9,9 @@ const StatsItem = ({ title, value }) => (
             variant="bold"
             sx={{ fontSize: (theme) => theme.spacing(4) }}
         />
-        {title && <Text name={title} variant="bold" />}
+        {title && (
+            <Text name={title} variant="bold" sx={{ textAlign: 'center' }} />
+        )}
     </Paper>
 );
 

@@ -78,7 +78,7 @@ const AccidentExpanded = ({
                         console.log('showing map...');
                     }}
                 >
-                    <Text text="Show map" name="ShowMap" />
+                    <Text text="Locate" name="Locate" />
                 </Button>
                 {status === 'new' && (
                     <Button
