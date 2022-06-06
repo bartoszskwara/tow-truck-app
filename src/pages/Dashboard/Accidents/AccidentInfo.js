@@ -6,11 +6,7 @@ import Text from '../../../components/Text';
 import InfoBox from './InfoBox';
 
 const AccidentInfo = ({ datetime, distance }) => {
-    const {
-        user: {
-            preferences: { language },
-        },
-    } = useUser();
+    const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     const arrivalDateTimeLabel = getRelativeDateTime(
         new Date().getTime() + distance.time,

@@ -14,11 +14,7 @@ const AccidentExpanded = ({
     mostRecent,
     status,
 }) => {
-    const {
-        user: {
-            preferences: { language },
-        },
-    } = useUser();
+    const { preferences: { language } = { language: 'en' } } = useUser();
     const lastUpdateLabel = getRelativeDateTime(lastUpdate, language);
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>

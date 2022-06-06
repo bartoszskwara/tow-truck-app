@@ -7,11 +7,7 @@ import getRelativeDateTime from '../../../utilities/getRelativeDateTime';
 import getStatusColor from './getStatusColor';
 
 const AccidentCollapsed = ({ datetime, distance, status }) => {
-    const {
-        user: {
-            preferences: { language },
-        },
-    } = useUser();
+    const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     return (
         <Box

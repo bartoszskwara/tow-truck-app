@@ -1,20 +1,18 @@
 import { BrowserRouter } from 'react-router-dom';
+import ThemeProvider from 'app/Theme';
+import CurrentUserManager from 'app/User/CurrentUserManager';
+import SystemNotification from 'components/SystemNotification';
 import Layout from 'pages/Layout';
-import ThemeProvider from 'providers/Theme';
-import AuthProvider from './providers/Auth';
-import UserProvider from './providers/User';
 
 const App = () => {
     return (
-        <AuthProvider>
-            <UserProvider>
-                <BrowserRouter>
-                    <ThemeProvider>
-                        <Layout />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </UserProvider>
-        </AuthProvider>
+        <BrowserRouter>
+            <ThemeProvider>
+                <Layout />
+                <SystemNotification />
+                <CurrentUserManager />
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 

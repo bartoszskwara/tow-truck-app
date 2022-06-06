@@ -50,7 +50,6 @@ const Chat = () => {
                 )}
             </Box>
         </Box>
-
     );
 };
 

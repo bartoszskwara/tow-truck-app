@@ -1,20 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Box } from '@mui/material';
-import Station from '../types/Station';
+import { useAppDispatch, useAppSelector } from 'app/store';
+import { fetchStations } from '../stationsSlice';
 
 const StationsList = () => {
-    const [stations, setStations] = useState<Station[]>([]);
+    const dispatch = useAppDispatch();
+    const stations = useAppSelector(({ stations }) => stations.stations);
+    const apiStatus = useAppSelector(({ stations: { status } }) => status);
 
     useEffect(() => {
-        const fetchStations = async () => {
-            const response = await fetch('./mockApi/stations.json').then(
-                (res) => res.json()
-            );
-            if (response) {
-                setStations(response.stations);
-            }
-        };
-        fetchStations();
+        dispatch(fetchStations());
     }, []);
 
     return (
@@ -23,11 +18,15 @@ const StationsList = () => {
                 padding: 2,
             }}
         >
-            <ul>
-                {stations?.map((i) => (
-                    <li key={`station_${i.id}`}>{i.name}</li>
-                ))}
-            </ul>
+            {apiStatus === 'pending' && 'Loading...'}
+            {apiStatus === 'failed' && 'Error!'}
+            {apiStatus === 'success' && (
+                <ul>
+                    {stations?.map((i) => (
+                        <li key={`station_${i.id}`}>{i.name}</li>
+                    ))}
+                </ul>
+            )}
         </Box>
     );
 };
