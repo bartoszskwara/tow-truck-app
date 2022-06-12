@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Theme } from '@mui/material';
 import Accidents from './Accidents';
 import Chat from './Chat';
 import Map from './Map';
@@ -35,7 +35,7 @@ const Dashboard = () => (
                 }}
             >
                 <Stats />
-                <Map sx={{ marginTop: (theme) => theme.spacing(1) }} />
+                <Map sx={{ marginTop: (theme: Theme) => theme.spacing(1) }} />
             </Box>
             <Chat />
         </Box>

@@ -1,27 +1,35 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
+import { Stats as StatsType } from 'types/Stats';
 import StatsItem from './StatsItem';
+import { ValueCreatorsType, Labels } from './types.d';
 
-const labels = {
+const labels: Labels = {
     accidents: 'AccidentsHandled',
     towing: 'MilesOfTowing',
     trucks: 'TrucksAvailable',
 };
 
-const valueCreators = {
-    accidents: (i) => i.value,
-    towing: (i) => i.value,
+const getValue = (i: StatsType): ReactNode => <>{'value' in i && i.value}</>;
+
+const valueCreators: ValueCreatorsType = {
+    accidents: getValue,
+    towing: getValue,
     trucks: (i) => (
         <>
-            <Box
-                component="span"
-                sx={{
-                    color: (theme) => theme.palette.warning.main,
-                }}
-            >
-                {i.available}
-            </Box>{' '}
-            / {i.all}
+            {'available' in i && (
+                <>
+                    <Box
+                        component="span"
+                        sx={{
+                            color: (theme) => theme.palette.warning.main,
+                        }}
+                    >
+                        {i.available}
+                    </Box>{' '}
+                    / {i.all}
+                </>
+            )}
         </>
     ),
 };
@@ -43,7 +51,7 @@ const Stats = () => {
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-            {stats.map((i) => {
+            {stats.map((i: StatsType) => {
                 const createValue = valueCreators[i.type];
                 return (
                     <StatsItem

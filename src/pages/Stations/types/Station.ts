@@ -1,16 +1,8 @@
+import { Stats } from '../../../types/Stats';
+
 type Person = {
     id: number;
     name: string;
-};
-type Stats = {
-    type: string;
-};
-type ValueStats = Stats & {
-    value: number;
-};
-type AvailableStats = Stats & {
-    available: number;
-    all: number;
 };
 type Address = {
     city: string;
@@ -24,7 +16,7 @@ type Station = {
     name: string;
     manager: Person;
     members: Person[];
-    stats: (ValueStats | AvailableStats)[];
+    stats: (Stats)[];
     address: Address;
     color: string;
 };

@@ -1,8 +1,14 @@
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Paper } from '@mui/material';
 import Text from 'components/Text';
 
-const StatsItem = ({ title, value }) => (
+export interface Props {
+    title: string;
+    value: string | ReactNode;
+}
+
+const StatsItem = ({ title, value }: Props) => (
     <Paper elevation={0} sx={{ flex: 1 }}>
         <Text
             text={value}

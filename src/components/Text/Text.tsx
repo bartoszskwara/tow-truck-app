@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
+import { Typography, TypographyProps } from '@mui/material';
 import labels from 'assets/labels';
 import { useUser } from 'hooks';
 
 const generateId = () => Math.random().toString(36).slice(2);
 
-export interface TextProps {
-    text: string;
-    name: string;
-    variables: (string | number)[];
+export interface TextProps extends TypographyProps {
+    text?: string | ReactNode;
+    name?: string;
+    variables?: (string | number)[];
 }
 
 const Text = ({ text, name, variables, ...rest }: TextProps) => {
@@ -24,7 +24,7 @@ const Text = ({ text, name, variables, ...rest }: TextProps) => {
         return translatedLabel.split('{}').map((part, idx) => (
             <span key={`${id}_${part}`}>
                 {part}
-                {variables[idx]}
+                {variables?.[idx]}
             </span>
         ));
     }, [language, name, variables]);
