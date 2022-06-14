@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { openNotification } from '../../components/SystemNotification/systemNotificationSlice';
-import ApiStatus from '../../types/ApiStatus';
+import { ApiStatus } from 'types';
 
 export interface User {
     name: string;

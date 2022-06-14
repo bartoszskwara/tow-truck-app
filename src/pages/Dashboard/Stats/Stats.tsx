@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import { Stats as StatsType } from 'types/Stats';
+import { Stats as StatsType } from 'types';
 import StatsItem from './StatsItem';
 import { ValueCreatorsType, Labels } from './types.d';
 

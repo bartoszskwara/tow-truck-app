@@ -5,7 +5,6 @@ import useAuth from 'hooks/useAuth';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     const { isAuthenticated } = useAuth();
-    console.log('isAuthenticated', isAuthenticated);
     return !isAuthenticated ? <Navigate to="/" replace /> : <>{children}</>;
 };
 

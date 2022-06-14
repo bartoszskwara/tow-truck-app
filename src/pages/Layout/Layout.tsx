@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import Header from 'components/Header';
 import useAuth from 'hooks/useAuth';
 import Dashboard from 'pages/Dashboard';
-import Dev from 'pages/Dev';
 import Login from 'pages/Login';
 import Settings from 'pages/Settings';
 import Stations from 'pages/Stations';
@@ -54,7 +53,6 @@ const Layout = () => {
                         }
                     />
                     <Route path="/settings" element={<Settings />} />
-                    <Route path="/dev" element={<Dev />} />
                     <Route path="*" element={<Navigate replace to="" />} />
                 </Routes>
             </Box>

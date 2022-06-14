@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+import { Accident as AccidentType } from 'types';
 import Accident from './Accident';
 
-const Accidents = ({ sx }) => {
-    const [accidents, setAccidents] = useState([]);
-    const [expanded, setExpanded] = useState(null);
+interface Props {
+    sx?: SxProps<Theme>;
+}
+
+const Accidents = ({ sx }: Props) => {
+    const [accidents, setAccidents] = useState<AccidentType[]>([]);
+    const [expanded, setExpanded] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchAccidents = async () => {

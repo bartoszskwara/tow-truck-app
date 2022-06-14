@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
+import { AccidentStatus } from '../../../types';
 import getStatusColor from './getStatusColor';
 
-const ColorIndicator = ({ status }) => (
+interface Props {
+    status: AccidentStatus;
+}
+
+const ColorIndicator = ({ status }: Props) => (
     <Box
         sx={(theme) => ({
             background: getStatusColor(theme, status),
@@ -14,7 +19,7 @@ const ColorIndicator = ({ status }) => (
 );
 
 ColorIndicator.propTypes = {
-    status: PropTypes.string,
+    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
 };
 
 export default ColorIndicator;

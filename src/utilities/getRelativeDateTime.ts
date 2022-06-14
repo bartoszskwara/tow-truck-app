@@ -1,4 +1,6 @@
-export default (timestamp, locales) => {
+import { LabelProps } from 'components/Text/Text.types';
+
+export default (timestamp: number, locales: string): LabelProps => {
     const now = new Date().getTime();
     const differenceInSeconds = (now - timestamp) / 1000;
     const differenceInSecondsAbsolute = Math.abs(differenceInSeconds);

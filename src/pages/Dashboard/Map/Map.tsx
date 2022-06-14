@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
 
-const Map = ({ sx }) => (
+interface Props {
+    sx: SxProps<Theme>;
+}
+
+const Map = ({ sx }: Props) => (
     <Box sx={[...(Array.isArray(sx) ? sx : [sx])]}>Map</Box>
 );
 

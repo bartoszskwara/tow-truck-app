@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import ApiStatus from '../../types/ApiStatus';
+import { ApiStatus } from 'types';
 import { fetchCurrentUser } from '../User/userSlice';
 
 interface AuthStateType {

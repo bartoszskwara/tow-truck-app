@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { openNotification } from 'components/SystemNotification/systemNotificationSlice';
-import ApiStatus from 'types/ApiStatus';
-import Station from './types/Station';
+import { ApiStatus, Station } from 'types';
 
 interface StationsStateType {
     stations: Station[];

@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
+import { Accident as AccidentType } from 'types';
 import AccidentCollapsed from './AccidentCollapsed';
 import AccidentExpanded from './AccidentExpanded';
 import ColorIndicator from './ColorIndicator';
 
-const A = () => {
-    return <span>Czapka</span>;
-};
+interface Props extends Omit<AccidentType, 'id'> {
+    expanded: boolean;
+    mostRecent: boolean;
+    onClick?: () => void;
+}
 
 const Accident = ({
-    id,
     datetime,
     address,
     distance,
@@ -18,7 +20,7 @@ const Accident = ({
     expanded,
     mostRecent,
     onClick,
-}) => (
+}: Props) => (
     <Box
         sx={(theme) => ({
             borderRadius: theme.spacing(1),
@@ -62,7 +64,6 @@ const Accident = ({
 );
 
 Accident.propTypes = {
-    id: PropTypes.number,
     datetime: PropTypes.number,
     address: PropTypes.shape({
         city: PropTypes.string,
@@ -80,7 +81,7 @@ Accident.propTypes = {
         time: PropTypes.number,
     }),
     lastUpdate: PropTypes.number,
-    status: PropTypes.string,
+    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
     expanded: PropTypes.bool,
     mostRecent: PropTypes.bool,
     onClick: PropTypes.func,

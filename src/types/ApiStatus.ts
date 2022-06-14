@@ -1,2 +1,1 @@
-type ApiStatus = 'idle' | 'pending' | 'success' | 'failed';
-export default ApiStatus;
+export type ApiStatus = 'idle' | 'pending' | 'success' | 'failed';

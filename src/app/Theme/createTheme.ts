@@ -22,6 +22,12 @@ declare module '@mui/material/Typography' {
     }
 }
 
+declare module '@mui/material/Button' {
+    interface ButtonPropsColorOverrides {
+        accent: true;
+    }
+}
+
 const makeThemeBasics = (mode: PaletteMode = 'dark') =>
     createTheme({
         spacing: 10,

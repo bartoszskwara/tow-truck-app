@@ -1,16 +1,17 @@
-import { ReactNode, useMemo } from 'react';
+import { useMemo, ElementType } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, TypographyProps } from '@mui/material';
 import labels from 'assets/labels';
 import { useUser } from 'hooks';
+import { LabelProps } from './Text.types';
 
 const generateId = () => Math.random().toString(36).slice(2);
 
-export interface TextProps extends TypographyProps {
-    text?: string | ReactNode;
-    name?: string;
-    variables?: (string | number)[];
-}
+export type TextProps = TypographyProps<
+    ElementType,
+    { component?: ElementType }
+> &
+    LabelProps;
 
 const Text = ({ text, name, variables, ...rest }: TextProps) => {
     const id = generateId();

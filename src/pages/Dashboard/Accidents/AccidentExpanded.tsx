@@ -2,9 +2,14 @@ import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
 import { useUser } from 'hooks';
+import { Accident } from 'types';
 import getRelativeDateTime from '../../../utilities/getRelativeDateTime';
 import AccidentInfo from './AccidentInfo';
 import Address from './Address';
+
+interface Props extends Omit<Accident, 'id'> {
+    mostRecent: boolean;
+}
 
 const AccidentExpanded = ({
     datetime,
@@ -13,7 +18,7 @@ const AccidentExpanded = ({
     lastUpdate,
     mostRecent,
     status,
-}) => {
+}: Props) => {
     const { preferences: { language } = { language: 'en' } } = useUser();
     const lastUpdateLabel = getRelativeDateTime(lastUpdate, language);
     return (
@@ -46,7 +51,7 @@ const AccidentExpanded = ({
                             justifyContent: 'space-between',
                         }}
                     >
-                        <Address address={address} />
+                        <Address {...address} />
                         <Text
                             text="last update: {}"
                             name="LastUpdate"
@@ -113,7 +118,7 @@ AccidentExpanded.propTypes = {
     }),
     lastUpdate: PropTypes.number,
     mostRecent: PropTypes.bool,
-    status: PropTypes.string,
+    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
 };
 
 AccidentExpanded.defaultProps = {

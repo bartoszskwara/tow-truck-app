@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import { useUser } from 'hooks';
+import { Accident } from 'types';
 import getRelativeDateTime from 'utilities/getRelativeDateTime';
 import Text from '../../../components/Text';
 import InfoBox from './InfoBox';
 
-const AccidentInfo = ({ datetime, distance }) => {
+const AccidentInfo = ({
+    datetime,
+    distance,
+}: Pick<Accident, 'datetime' | 'distance'>) => {
     const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     const arrivalDateTimeLabel = getRelativeDateTime(

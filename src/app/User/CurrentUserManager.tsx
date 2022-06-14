@@ -10,7 +10,6 @@ const CurrentUserManager = () => {
     console.log(user);
 
     const localStorageTokenListener = (e: StorageEvent): void => {
-        console.log('a', e.key);
         if (e.key !== 'auth_token') {
             return;
         }

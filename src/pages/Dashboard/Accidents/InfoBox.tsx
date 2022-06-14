@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
 import Text from 'components/Text';
+import {LabelProps, Variable} from '../../../components/Text/Text.types';
+
+interface Props {
+    headerLabel: LabelProps;
+    headerValue: Variable;
+    subtitleLabel: LabelProps;
+    subtitleValue: Variable;
+    sx?: SxProps<Theme>;
+}
 
 const InfoBox = ({
     headerLabel,
@@ -8,7 +18,7 @@ const InfoBox = ({
     subtitleLabel,
     subtitleValue,
     sx,
-}) => (
+}: Props) => (
     <Box sx={[...(Array.isArray(sx) ? sx : [sx])]}>
         <Text
             text={headerLabel.text}

@@ -2,11 +2,16 @@ import PropTypes from 'prop-types';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
+import { Accident } from 'types';
 import { useUser } from '../../../hooks';
 import getRelativeDateTime from '../../../utilities/getRelativeDateTime';
 import getStatusColor from './getStatusColor';
 
-const AccidentCollapsed = ({ datetime, distance, status }) => {
+const AccidentCollapsed = ({
+    datetime,
+    distance,
+    status,
+}: Pick<Accident, 'datetime' | 'distance' | 'status'>) => {
     const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     return (
@@ -82,7 +87,7 @@ AccidentCollapsed.propTypes = {
         }),
         time: PropTypes.number,
     }),
-    status: PropTypes.string,
+    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
 };
 
 AccidentCollapsed.defaultProps = {
