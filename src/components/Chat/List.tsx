@@ -1,9 +1,18 @@
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+import Avatar from 'components/Avatar';
 import Text from 'components/Text';
-import BadgeAvatar from './BadgeAvatar';
+import { LabelProps } from 'components/Text/Text.types';
+import { ChatItem } from 'types';
 
-const List = ({ items, label, sx }) => {
+interface Props {
+    items: ChatItem[];
+    label: LabelProps;
+    sx?: SxProps<Theme>;
+}
+
+const List = ({ items, label, sx }: Props) => {
     return (
         <Box
             sx={[
@@ -44,7 +53,7 @@ const List = ({ items, label, sx }) => {
                             marginBottom: (theme) => theme.spacing(2),
                         }}
                     >
-                        <BadgeAvatar
+                        <Avatar
                             key={`${i.type}_${i.id}`}
                             name={i.name}
                             status={i.status}

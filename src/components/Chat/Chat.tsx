@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import _ from 'lodash';
 import { Box } from '@mui/material';
+import { ChatItem } from 'types';
 import List from './List';
 
 const Chat = () => {
-    const [recentChats, setRecentChats] = useState([]);
+    const [recentChats, setRecentChats] = useState<ChatItem[]>([]);
 
     const { driver, station } = useMemo(
         () => _.groupBy(recentChats, 'type'),

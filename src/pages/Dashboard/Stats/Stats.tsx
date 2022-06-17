@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
+import StatsItem from 'components/StatsItem';
 import { Stats as StatsType } from 'types';
-import StatsItem from './StatsItem';
 import { ValueCreatorsType, Labels } from './types.d';
 
 const labels: Labels = {
@@ -50,7 +50,13 @@ const Stats = () => {
     }, []);
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                gap: (theme) => theme.spacing(2),
+            }}
+        >
             {stats.map((i: StatsType) => {
                 const createValue = valueCreators[i.type];
                 return (

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
+import Chat from 'components/Chat';
 import Header from 'components/Header';
 import useAuth from 'hooks/useAuth';
 import Dashboard from 'pages/Dashboard';
@@ -34,6 +35,7 @@ const Layout = () => {
                     display: 'flex',
                     flex: 1,
                     flexDirection: 'row',
+                    justifyContent: 'space-between',
                     padding: (theme) => `
                     ${theme.spacing(2)}
                     ${theme.spacing(4)}
@@ -55,6 +57,9 @@ const Layout = () => {
                     <Route path="/settings" element={<Settings />} />
                     <Route path="*" element={<Navigate replace to="" />} />
                 </Routes>
+                <Box sx={{ marginLeft: (theme) => theme.spacing(2.5) }}>
+                    <Chat />
+                </Box>
             </Box>
         </Box>
     );

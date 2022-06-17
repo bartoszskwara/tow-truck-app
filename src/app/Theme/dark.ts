@@ -32,6 +32,7 @@ const darkTheme: ThemeType = {
     gray: {
         0: '#f5f5f5',
         50: '#E5E5E5',
+        70: '#C4C4C4',
         100: '#848484',
     },
 };

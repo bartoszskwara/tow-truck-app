@@ -4,3 +4,5 @@ export type { ApiStatus } from './ApiStatus';
 export type { Station } from './Station';
 export type { Stats } from './Stats';
 export type { Accident, AccidentStatus } from './Accident';
+export type { ChatItem } from './ChatItem';
+export type { OnlineStatus } from './OnlineStatus';

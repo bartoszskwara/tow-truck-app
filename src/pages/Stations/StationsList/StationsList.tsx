@@ -1,31 +1,43 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import Loader from 'components/Loader';
+import { Station } from '../../../types';
 import { fetchStations } from '../stationsSlice';
+import StationCard from './StationCard';
+
+export const StationContext = React.createContext<Partial<Station>>({});
 
 const StationsList = () => {
     const dispatch = useAppDispatch();
-    const stations = useAppSelector(({ stations }) => stations.stations);
-    const apiStatus = useAppSelector(({ stations: { status } }) => status);
+    const { stations, status: apiStatus } = useAppSelector(
+        ({ stations }) => stations
+    );
 
     useEffect(() => {
         dispatch(fetchStations());
     }, []);
 
     return (
-        <Box
-            sx={{
-                padding: 2,
-            }}
-        >
-            {apiStatus === 'pending' && 'Loading...'}
-            {apiStatus === 'failed' && 'Error!'}
+        <Box>
+            {apiStatus === 'pending' && <Loader />}
             {apiStatus === 'success' && (
-                <ul>
+                <Box
+                    component="ul"
+                    sx={{ listStyleType: 'none', margin: 0, padding: 0 }}
+                >
                     {stations?.map((i) => (
-                        <li key={`station_${i.id}`}>{i.name}</li>
+                        <Box
+                            component="li"
+                            key={`station_${i.id}`}
+                            sx={{ marginBottom: (theme) => theme.spacing(4) }}
+                        >
+                            <StationContext.Provider value={i}>
+                                <StationCard />
+                            </StationContext.Provider>
+                        </Box>
                     ))}
-                </ul>
+                </Box>
             )}
         </Box>
     );

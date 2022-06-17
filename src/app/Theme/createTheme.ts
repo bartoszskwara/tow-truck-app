@@ -12,6 +12,9 @@ declare module '@mui/material/styles' {
         secondary: string;
         accent: string;
     }
+    interface TypeText {
+        contrastText: string;
+    }
 }
 
 declare module '@mui/material/Typography' {

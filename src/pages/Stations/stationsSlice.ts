@@ -12,7 +12,7 @@ const initialState: StationsStateType = {
     status: 'idle',
 };
 
-const { actions, reducer } = createSlice({
+const { reducer } = createSlice({
     name: 'stations',
     initialState,
     reducers: {},

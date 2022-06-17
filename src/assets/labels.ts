@@ -35,6 +35,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'Accidents',
+        translations: {
+            pl: 'wypadki',
+            en: 'accidents',
+        },
+    },
+    {
         name: 'MilesOfTowing',
         translations: {
             pl: 'mil holowania',
@@ -49,6 +56,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'Trucks',
+        translations: {
+            pl: 'lawety',
+            en: 'trucks',
+        },
+    },
+    {
         name: 'ChatStations',
         translations: {
             pl: 'Stacje',
@@ -60,6 +74,13 @@ const labels: Label[] = [
         translations: {
             pl: 'Kierowcy',
             en: 'Drivers',
+        },
+    },
+    {
+        name: 'Drivers',
+        translations: {
+            pl: 'kierowcy',
+            en: 'drivers',
         },
     },
     {
@@ -193,6 +214,13 @@ const labels: Label[] = [
         translations: {
             pl: 'Ładowanie stacji zakończone niepowodzeniem',
             en: 'Fetching stations failed',
+        },
+    },
+    {
+        name: 'Manager',
+        translations: {
+            pl: 'kierownik: {}',
+            en: 'manager: {}',
         },
     },
 ];

@@ -3,12 +3,7 @@ import StationsList from './StationsList';
 
 const Stations = () => {
     return (
-        <Box
-            sx={{
-                padding: 2,
-            }}
-        >
-            Stations
+        <Box>
             <StationsList />
         </Box>
     );
