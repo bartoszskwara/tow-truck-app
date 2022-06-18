@@ -1,30 +1,9 @@
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Box, SxProps, Theme } from '@mui/material';
 import StatsItem, { Props as StatsItemProps } from 'components/StatsItem';
 import { Stats as StatsType } from 'types';
 import StatisticsLoader from './StatisticsLoader';
-
-const getValue = (i: StatsType): ReactNode => {
-    if ('value' in i) {
-        return <>{i.value}</>;
-    }
-    if ('available' in i) {
-        return (
-            <>
-                <Box
-                    component="span"
-                    sx={{
-                        color: (theme) => theme.palette.warning.main,
-                    }}
-                >
-                    {i.available}
-                </Box>{' '}
-                / {i.all}
-            </>
-        );
-    }
-    return <></>;
-};
+import StatsValue from './StatsValue';
 
 interface Props {
     sx?: SxProps<Theme>;
@@ -61,14 +40,15 @@ const Statistics = ({
             ]}
         >
             {loading && <StatisticsLoader />}
-            {items.map((i: StatsType) => (
-                <StatsItem
-                    key={i.type}
-                    title={getLabelName(i) || ''}
-                    value={getValue(i)}
-                    {...statsItemProps}
-                />
-            ))}
+            {!loading &&
+                items.map((i: StatsType) => (
+                    <StatsItem
+                        key={i.type}
+                        title={getLabelName(i) || ''}
+                        value={<StatsValue item={i} />}
+                        {...statsItemProps}
+                    />
+                ))}
         </Box>
     );
 };
