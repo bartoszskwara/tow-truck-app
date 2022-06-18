@@ -1,8 +1,11 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Box } from '@mui/material';
 import StatsItem from 'components/StatsItem';
 import { Stats as StatsType } from 'types';
+import { useAppDispatch, useAppSelector } from '../../../app/store';
+import { fetchStatistics } from '../dashboardSlice';
 import { ValueCreatorsType, Labels } from './Stats.types';
+import StatsLoader from './StatsLoader';
 
 const labels: Labels = {
     accidents: 'AccidentsHandled',
@@ -35,18 +38,12 @@ const valueCreators: ValueCreatorsType = {
 };
 
 const Stats = () => {
-    const [stats, setStats] = useState([]);
+    const dispatch = useAppDispatch();
+    const { stats, apiStatus } = useAppSelector(({ dashboard }) => dashboard);
+    const statsLoading = apiStatus.stats === 'pending';
 
     useEffect(() => {
-        const fetchStatistics = async () => {
-            const response = await fetch('./mockApi/stats.json').then((res) =>
-                res.json()
-            );
-            if (response) {
-                setStats(response.stats);
-            }
-        };
-        fetchStatistics();
+        dispatch(fetchStatistics());
     }, []);
 
     return (
@@ -57,6 +54,7 @@ const Stats = () => {
                 gap: (theme) => theme.spacing(2),
             }}
         >
+            {statsLoading && <StatsLoader />}
             {stats.map((i: StatsType) => {
                 const createValue = valueCreators[i.type];
                 return (

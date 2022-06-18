@@ -1,16 +1,14 @@
-import { Skeleton, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { ElementType } from 'react';
+import { Skeleton, SkeletonProps } from '@mui/material';
 
-interface Props {
-    sx?: SxProps<Theme>;
-}
-
-const Loader = ({ sx }: Props) => (
+const Loader = ({
+    ...rest
+}: SkeletonProps<ElementType, { component?: ElementType }>) => (
     <Skeleton
         component="div"
-        sx={[{ flex: 1 }, ...(Array.isArray(sx) ? sx : [sx])]}
         animation="wave"
         variant="rectangular"
+        {...rest}
     />
 );
 

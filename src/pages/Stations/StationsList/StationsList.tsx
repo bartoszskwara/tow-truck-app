@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import Loader from 'components/Loader';
 import { Station } from '../../../types';
-import { fetchStations, clearStore } from '../stationsSlice';
+import { fetchStations } from '../stationsSlice';
 import StationCard from './StationCard';
+import StationsListLoader from './StationsListLoader';
 
 export const StationContext = React.createContext<Partial<Station>>({});
 
@@ -17,27 +17,11 @@ const StationsList = () => {
 
     useEffect(() => {
         dispatch(fetchStations());
-        return () => {
-            dispatch(clearStore());
-        };
     }, []);
 
     return (
         <>
-            {stationsApiStatus === 'pending' && (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flex: 1,
-                        gap: (theme) => theme.spacing(4),
-                    }}
-                >
-                    <Loader />
-                    <Loader />
-                    <Loader />
-                </Box>
-            )}
+            {stationsApiStatus === 'pending' && <StationsListLoader />}
             {stationsApiStatus === 'success' && (
                 <Box
                     component="ul"

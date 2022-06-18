@@ -1,9 +1,20 @@
+import { useEffect } from 'react';
 import { Box } from '@mui/material';
+import { useAppDispatch } from '../../app/store';
 import Map from './Map';
 import StationsList from './StationsList';
+import { clearStore } from './stationsSlice';
 import Stats from './Stats';
 
 const Stations = () => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearStore());
+        };
+    }, []);
+
     return (
         <Box
             sx={{

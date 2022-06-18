@@ -2,28 +2,25 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
-import { Accident as AccidentType } from 'types';
+import { useAppDispatch, useAppSelector } from '../../../app/store';
+import { clearStore, fetchAccidents } from '../dashboardSlice';
 import Accident from './Accident';
+import AccidentsLoader from './AccidentsLoader';
 
 interface Props {
     sx?: SxProps<Theme>;
 }
 
 const Accidents = ({ sx }: Props) => {
-    const [accidents, setAccidents] = useState<AccidentType[]>([]);
+    const dispatch = useAppDispatch();
+    const { accidents, apiStatus } = useAppSelector(
+        ({ dashboard }) => dashboard
+    );
     const [expanded, setExpanded] = useState<number | null>(null);
+    const accidentsLoading = apiStatus.accidents === 'pending';
 
     useEffect(() => {
-        const fetchAccidents = async () => {
-            const response = await fetch('./mockApi/accidents.json').then(
-                (res) => res.json()
-            );
-            if (response) {
-                const data = response.accidents;
-                setAccidents(data);
-            }
-        };
-        fetchAccidents();
+        dispatch(fetchAccidents());
     }, []);
 
     return (
@@ -33,6 +30,7 @@ const Accidents = ({ sx }: Props) => {
                 ...(Array.isArray(sx) ? sx : [sx]),
             ]}
         >
+            {accidentsLoading && <AccidentsLoader />}
             {accidents.map((item, index) => (
                 <Accident
                     key={item.id}

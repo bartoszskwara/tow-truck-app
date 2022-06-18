@@ -1,31 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import _ from 'lodash';
 import { Box } from '@mui/material';
-import { ChatItem } from 'types';
+import { useAppDispatch, useAppSelector } from '../../app/store';
+import ChatLoader from './ChatLoader';
+import { fetchRecentChats } from './chatSlice';
 import List from './List';
 
 const Chat = () => {
-    const [recentChats, setRecentChats] = useState<ChatItem[]>([]);
+    const dispatch = useAppDispatch();
+    const { recentChats, apiStatus } = useAppSelector(({ chat }) => chat);
 
     const { driver, station } = useMemo(
         () => _.groupBy(recentChats, 'type'),
         [recentChats]
     );
 
+    const chatsLoading = apiStatus.chats === 'pending';
+    const chatsLoaded = apiStatus.chats === 'success';
+
     useEffect(() => {
-        const fetchRecentChats = async () => {
-            const response = await fetch('./mockApi/recentChats.json').then(
-                (res) => res.json()
-            );
-            if (response) {
-                setRecentChats(response.chats);
-            }
-        };
-        fetchRecentChats();
+        dispatch(fetchRecentChats());
     }, []);
 
     return (
-        <Box>
+        <>
             <Box
                 sx={(theme) => ({
                     background: theme.palette.background.accent,
@@ -34,23 +32,31 @@ const Chat = () => {
                     borderRadius: theme.spacing(1),
                 })}
             >
-                {station && (
-                    <List
-                        items={station}
-                        label={{ text: 'Stations', name: 'ChatStations' }}
-                        sx={{
-                            marginBottom: (theme) => theme.spacing(2),
-                        }}
-                    />
-                )}
-                {driver && (
-                    <List
-                        items={driver}
-                        label={{ text: 'Drivers', name: 'ChatDrivers' }}
-                    />
+                {chatsLoading && <ChatLoader />}
+                {chatsLoaded && (
+                    <>
+                        {station && (
+                            <List
+                                items={station}
+                                label={{
+                                    text: 'Stations',
+                                    name: 'ChatStations',
+                                }}
+                                sx={{
+                                    marginBottom: (theme) => theme.spacing(2),
+                                }}
+                            />
+                        )}
+                        {driver && (
+                            <List
+                                items={driver}
+                                label={{ text: 'Drivers', name: 'ChatDrivers' }}
+                            />
+                        )}
+                    </>
                 )}
             </Box>
-        </Box>
+        </>
     );
 };
 

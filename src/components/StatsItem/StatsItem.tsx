@@ -43,6 +43,9 @@ const StatsItem = ({ title, value, sxProps }: Props) => (
                 name={title}
                 variant="bold"
                 sx={[
+                    {
+                        textAlign: 'center',
+                    },
                     ...(sxProps
                         ? Array.isArray(sxProps.title)
                             ? sxProps.title

@@ -224,10 +224,31 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'FetchingAccidentsFailed',
+        translations: {
+            pl: 'Ładowanie wypadków zakończone niepowodzeniem',
+            en: 'Fetching accidents failed',
+        },
+    },
+    {
+        name: 'FetchingChatsFailed',
+        translations: {
+            pl: 'Ładowanie czatu zakończone niepowodzeniem',
+            en: 'Fetching chats failed',
+        },
+    },
+    {
         name: 'Manager',
         translations: {
             pl: 'kierownik: {}',
             en: 'manager: {}',
+        },
+    },
+    {
+        name: 'Stations',
+        translations: {
+            pl: 'stacje',
+            en: 'stations',
         },
     },
 ];

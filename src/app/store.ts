@@ -1,6 +1,8 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import chatReducer from '../components/Chat/chatSlice';
 import systemNotificationReducer from '../components/SystemNotification/systemNotificationSlice';
+import dashboardReducer from '../pages/Dashboard/dashboardSlice';
 import stationsReducer from '../pages/Stations/stationsSlice';
 import authReducer from './Auth/authSlice';
 import themeReducer from './Theme/themeSlice';
@@ -11,6 +13,8 @@ export const store = configureStore({
         theme: themeReducer,
         auth: authReducer,
         user: userReducer,
+        dashboard: dashboardReducer,
+        chat: chatReducer,
         stations: stationsReducer,
         systemNotification: systemNotificationReducer,
     },
