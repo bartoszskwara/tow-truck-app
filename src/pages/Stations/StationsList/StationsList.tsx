@@ -3,25 +3,42 @@ import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import Loader from 'components/Loader';
 import { Station } from '../../../types';
-import { fetchStations } from '../stationsSlice';
+import { fetchStations, clearStore } from '../stationsSlice';
 import StationCard from './StationCard';
 
 export const StationContext = React.createContext<Partial<Station>>({});
 
 const StationsList = () => {
     const dispatch = useAppDispatch();
-    const { stations, status: apiStatus } = useAppSelector(
-        ({ stations }) => stations
-    );
+    const {
+        stations,
+        apiStatus: { stations: stationsApiStatus },
+    } = useAppSelector(({ stations }) => stations);
 
     useEffect(() => {
         dispatch(fetchStations());
+        return () => {
+            dispatch(clearStore());
+        };
     }, []);
 
     return (
-        <Box>
-            {apiStatus === 'pending' && <Loader />}
-            {apiStatus === 'success' && (
+        <>
+            {stationsApiStatus === 'pending' && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flex: 1,
+                        gap: (theme) => theme.spacing(4),
+                    }}
+                >
+                    <Loader />
+                    <Loader />
+                    <Loader />
+                </Box>
+            )}
+            {stationsApiStatus === 'success' && (
                 <Box
                     component="ul"
                     sx={{ listStyleType: 'none', margin: 0, padding: 0 }}
@@ -39,7 +56,7 @@ const StationsList = () => {
                     ))}
                 </Box>
             )}
-        </Box>
+        </>
     );
 };
 

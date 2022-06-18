@@ -105,6 +105,13 @@ export default (mode: PaletteMode = 'dark') => {
                     },
                 },
             },
+            MuiSkeleton: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: theme.palette.gray[50],
+                    },
+                },
+            },
         },
     });
 };

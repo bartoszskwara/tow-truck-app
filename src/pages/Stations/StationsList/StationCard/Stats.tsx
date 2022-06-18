@@ -1,9 +1,8 @@
 import { ReactNode, useContext } from 'react';
-import { Box, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 import { Station, Stats as StatsType } from 'types';
 import StatsItem from '../../../../components/StatsItem';
-import { Labels, ValueCreatorsType } from '../../../Dashboard/Stats/types.d';
+import { Labels, ValueCreatorsType } from '../../Stats/Stats.types';
 import { StationContext } from '../StationsList';
 
 const labels: Labels = {

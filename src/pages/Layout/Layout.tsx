@@ -39,7 +39,7 @@ const Layout = () => {
                     padding: (theme) => `
                     ${theme.spacing(2)}
                     ${theme.spacing(4)}
-                    ${theme.spacing(1)}
+                    ${theme.spacing(2)}
                     ${theme.spacing(6)}
                 `,
                 }}

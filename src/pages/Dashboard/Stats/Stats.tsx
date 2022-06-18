@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import StatsItem from 'components/StatsItem';
 import { Stats as StatsType } from 'types';
-import { ValueCreatorsType, Labels } from './types.d';
+import { ValueCreatorsType, Labels } from './Stats.types';
 
 const labels: Labels = {
     accidents: 'AccidentsHandled',

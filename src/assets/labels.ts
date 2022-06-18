@@ -217,6 +217,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'FetchingStatisticsFailed',
+        translations: {
+            pl: 'Ładowanie statystyk zakończone niepowodzeniem',
+            en: 'Fetching statistics failed',
+        },
+    },
+    {
         name: 'Manager',
         translations: {
             pl: 'kierownik: {}',
