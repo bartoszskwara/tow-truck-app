@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Loader from 'components/Loader';
 
-const StatsLoader = () => (
+const StatisticsLoader = () => (
     <Box
         sx={{
             display: 'flex',
@@ -25,4 +25,4 @@ const StatsLoader = () => (
     </Box>
 );
 
-export default StatsLoader;
+export default StatisticsLoader;

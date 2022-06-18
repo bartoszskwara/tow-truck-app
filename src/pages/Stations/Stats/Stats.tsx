@@ -1,11 +1,8 @@
-import React, { ReactNode, useEffect } from 'react';
-import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import StatsItem from 'components/StatsItem';
+import { Labels } from 'components/Statistics/Statistics.types';
 import { Stats as StatsType } from 'types';
+import Statistics from '../../../components/Statistics';
 import { fetchStatistics } from '../stationsSlice';
-import { ValueCreatorsType, Labels } from './Stats.types';
-import StatsLoader from './StatsLoader';
 
 const labels: Labels = {
     stations: 'Stations',
@@ -13,46 +10,18 @@ const labels: Labels = {
     trucks: 'Trucks',
 };
 
-const getValue = (i: StatsType): ReactNode => <>{'value' in i && i.value}</>;
-
-const valueCreators: ValueCreatorsType = {
-    stations: getValue,
-    drivers: getValue,
-    trucks: getValue,
-};
-
 const Stats = () => {
     const dispatch = useAppDispatch();
-    const {
-        stats,
-        apiStatus: { stats: statsApiStatus },
-    } = useAppSelector(({ stations }) => stations);
-
-    useEffect(() => {
-        dispatch(fetchStatistics());
-    }, []);
+    const { stats, apiStatus } = useAppSelector(({ stations }) => stations);
+    const statsLoading = apiStatus.stats === 'pending';
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: (theme) => theme.spacing(2),
-            }}
-        >
-            {statsApiStatus === 'pending' && <StatsLoader />}
-            {stats.map((i: StatsType) => {
-                const createValue = valueCreators[i.type];
-                console.log('>>', i, i.type, valueCreators);
-                return (
-                    <StatsItem
-                        key={i.type}
-                        title={labels[i.type] || ''}
-                        value={createValue(i)}
-                    />
-                );
-            })}
-        </Box>
+        <Statistics
+            items={stats}
+            fetchData={() => dispatch(fetchStatistics())}
+            loading={statsLoading}
+            getLabelName={(i: StatsType) => labels[i.type]}
+        />
     );
 };
 

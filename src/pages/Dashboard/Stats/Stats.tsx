@@ -1,40 +1,14 @@
-import { ReactNode, useEffect } from 'react';
-import { Box } from '@mui/material';
-import StatsItem from 'components/StatsItem';
+import { useEffect } from 'react';
+import { Labels } from 'components/Statistics/Statistics.types';
 import { Stats as StatsType } from 'types';
 import { useAppDispatch, useAppSelector } from '../../../app/store';
+import Statistics from '../../../components/Statistics';
 import { fetchStatistics } from '../dashboardSlice';
-import { ValueCreatorsType, Labels } from './Stats.types';
-import StatsLoader from './StatsLoader';
 
 const labels: Labels = {
     accidents: 'AccidentsHandled',
     towing: 'MilesOfTowing',
     trucks: 'TrucksAvailable',
-};
-
-const getValue = (i: StatsType): ReactNode => <>{'value' in i && i.value}</>;
-
-const valueCreators: ValueCreatorsType = {
-    accidents: getValue,
-    towing: getValue,
-    trucks: (i) => (
-        <>
-            {'available' in i && (
-                <>
-                    <Box
-                        component="span"
-                        sx={{
-                            color: (theme) => theme.palette.warning.main,
-                        }}
-                    >
-                        {i.available}
-                    </Box>{' '}
-                    / {i.all}
-                </>
-            )}
-        </>
-    ),
 };
 
 const Stats = () => {
@@ -47,25 +21,12 @@ const Stats = () => {
     }, []);
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: (theme) => theme.spacing(2),
-            }}
-        >
-            {statsLoading && <StatsLoader />}
-            {stats.map((i: StatsType) => {
-                const createValue = valueCreators[i.type];
-                return (
-                    <StatsItem
-                        key={i.type}
-                        title={labels[i.type] || ''}
-                        value={createValue(i)}
-                    />
-                );
-            })}
-        </Box>
+        <Statistics
+            items={stats}
+            fetchData={() => dispatch(fetchStatistics())}
+            loading={statsLoading}
+            getLabelName={(i: StatsType) => labels[i.type]}
+        />
     );
 };
 
