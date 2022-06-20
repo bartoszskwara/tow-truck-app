@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { useAppDispatch, useAppSelector } from 'app/store';
@@ -6,19 +7,36 @@ import { closeNotification } from './systemNotificationSlice';
 
 const SystemNotification = () => {
     const dispatch = useAppDispatch();
-    const { open, textProps, severity } = useAppSelector(
+    const { notifications } = useAppSelector(
         ({ systemNotification }) => systemNotification
     );
     const handleClose = () => {
         dispatch(closeNotification());
     };
+    const currentNotification = _.isEmpty(notifications)
+        ? null
+        : notifications[notifications.length - 1];
 
     return (
-        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity={severity} elevation={6}>
-                {textProps && <Text {...textProps} />}
-            </Alert>
-        </Snackbar>
+        <>
+            {currentNotification && (
+                <Snackbar
+                    open={!!currentNotification}
+                    autoHideDuration={5000}
+                    onClose={handleClose}
+                >
+                    <Alert
+                        onClose={handleClose}
+                        severity={currentNotification.severity}
+                        elevation={6}
+                    >
+                        {currentNotification.textProps && (
+                            <Text {...currentNotification.textProps} />
+                        )}
+                    </Alert>
+                </Snackbar>
+            )}
+        </>
     );
 };
 

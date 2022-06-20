@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { openNotification } from '../../components/SystemNotification/systemNotificationSlice';
 import { ApiStatus } from 'types';
+import { openNotification } from '../../components/SystemNotification/systemNotificationSlice';
+import { removeTokenFromStorageAndState } from '../Auth/authSlice';
 
 export interface User {
     name: string;
@@ -55,20 +56,21 @@ export const fetchCurrentUser = createAsyncThunk(
     async (token: string, { dispatch }) => {
         await new Promise((res) => setTimeout(res, 500));
         try {
-            const response = await fetch('./mockApi/currentUser.json').then(
-                (res) => res.json()
+            return await fetch('./mockApi/currentUser.json').then((res) =>
+                res.json()
             );
-            return response;
         } catch (e) {
             dispatch(
                 openNotification({
                     textProps: {
-                        text: 'Fetching stations failed',
-                        name: 'FetchingStationsFailed',
+                        text: 'Fetching user data failed',
+                        name: 'FetchingUserDataFailed',
                     },
                     severity: 'error',
                 })
             );
+            dispatch(removeTokenFromStorageAndState());
+            throw e;
         }
     }
 );

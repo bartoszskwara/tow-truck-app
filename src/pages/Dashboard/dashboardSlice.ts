@@ -70,6 +70,7 @@ export const fetchAccidents = createAsyncThunk(
                     severity: 'error',
                 })
             );
+            throw e;
         }
     }
 );
@@ -93,6 +94,7 @@ export const fetchStatistics = createAsyncThunk(
                     severity: 'error',
                 })
             );
+            throw e;
         }
     }
 );

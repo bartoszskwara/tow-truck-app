@@ -47,6 +47,7 @@ export const authenticate = createAsyncThunk(
             return response.token;
         } catch (e) {
             dispatch(removeTokenFromStorageAndState());
+            throw e;
         }
     }
 );

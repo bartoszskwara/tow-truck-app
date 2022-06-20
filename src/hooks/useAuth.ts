@@ -8,11 +8,12 @@ interface AuthData {
     isAuthenticated: boolean;
     onLogin: () => void;
     onLogout: () => void;
+    loginFailed: boolean;
 }
 
 const useAuth = (): AuthData => {
     const dispatch = useAppDispatch();
-    const token = useAppSelector(({ auth }) => auth.token);
+    const { token, status } = useAppSelector(({ auth }) => auth);
 
     const handleLogin = async () => {
         dispatch(authenticate());
@@ -26,6 +27,7 @@ const useAuth = (): AuthData => {
         isAuthenticated: !!token,
         onLogin: handleLogin,
         onLogout: handleLogout,
+        loginFailed: status === 'failed',
     };
 };
 

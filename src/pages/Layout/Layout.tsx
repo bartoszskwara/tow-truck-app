@@ -57,9 +57,11 @@ const Layout = () => {
                     <Route path="/settings" element={<Settings />} />
                     <Route path="*" element={<Navigate replace to="" />} />
                 </Routes>
-                <Box sx={{ marginLeft: (theme) => theme.spacing(2.5) }}>
-                    <Chat />
-                </Box>
+                {isAuthenticated && (
+                    <Box sx={{ marginLeft: (theme) => theme.spacing(2.5) }}>
+                        <Chat />
+                    </Box>
+                )}
             </Box>
         </Box>
     );

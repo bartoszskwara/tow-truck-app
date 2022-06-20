@@ -14,7 +14,11 @@ const ChatCategoryLoader = () => (
         <Loader
             key={`chat_loader_text`}
             sx={(theme) => ({
-                backgroundColor: theme.palette.background.primary,
+                backgroundColor: theme.palette.gray[900],
+                '&:after': {
+                    background: (theme) =>
+                        `linear-gradient(90deg, transparent, ${theme.palette.gray[800]}, transparent)`,
+                },
             })}
             variant="text"
         />
@@ -24,9 +28,13 @@ const ChatCategoryLoader = () => (
                 <Loader
                     key={`chat_loader_${i}`}
                     sx={(theme) => ({
-                        backgroundColor: theme.palette.background.primary,
+                        backgroundColor: theme.palette.gray[900],
                         width: theme.spacing(5.5),
                         height: theme.spacing(5.5),
+                        '&:after': {
+                            background: (theme) =>
+                                `linear-gradient(90deg, transparent, ${theme.palette.gray[800]}, transparent)`,
+                        },
                     })}
                     variant="circular"
                 />

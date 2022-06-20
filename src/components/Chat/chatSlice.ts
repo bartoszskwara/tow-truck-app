@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { openNotification } from 'components/SystemNotification/systemNotificationSlice';
-import {Accident, ApiStatus, ChatItem, Stats} from 'types';
+import { ApiStatus, ChatItem } from 'types';
 
 interface StateType {
     recentChats: ChatItem[];
@@ -56,6 +56,7 @@ export const fetchRecentChats = createAsyncThunk(
                     severity: 'error',
                 })
             );
+            throw e;
         }
     }
 );

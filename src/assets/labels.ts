@@ -238,6 +238,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'FetchingUserDataFailed',
+        translations: {
+            pl: 'Ładowanie danych użytkownika zakończone niepowodzeniem',
+            en: 'Fetching user data failed',
+        },
+    },
+    {
         name: 'Manager',
         translations: {
             pl: 'kierownik: {}',
