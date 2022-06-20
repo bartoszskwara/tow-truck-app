@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Box } from '@mui/material';
 import { Station } from 'types';
 import Text from '../../../../components/Text';
-import { StationContext } from '../StationsList';
+import StationContext from '../StationContext';
 import Card from './Card';
 
 const Footer = () => {

@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { Paper, SxProps } from '@mui/material';
+import { Fade, Paper, SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import Text from 'components/Text';
 
@@ -15,46 +15,48 @@ export interface Props {
 }
 
 const StatsItem = ({ title, value, sxProps }: Props) => (
-    <Paper
-        elevation={0}
-        sx={[
-            { flex: 1 },
-            ...(sxProps
-                ? Array.isArray(sxProps.root)
-                    ? sxProps.root
-                    : [sxProps.root]
-                : []),
-        ]}
-    >
-        <Text
-            text={value}
-            variant="bold"
+    <Fade in={true}>
+        <Paper
+            elevation={0}
             sx={[
-                { fontSize: (theme) => theme.spacing(4) },
+                { flex: 1 },
                 ...(sxProps
-                    ? Array.isArray(sxProps.value)
-                        ? sxProps.value
-                        : [sxProps.value]
+                    ? Array.isArray(sxProps.root)
+                        ? sxProps.root
+                        : [sxProps.root]
                     : []),
             ]}
-        />
-        {title && (
+        >
             <Text
-                name={title}
+                text={value}
                 variant="bold"
                 sx={[
-                    {
-                        textAlign: 'center',
-                    },
+                    { fontSize: (theme) => theme.spacing(4) },
                     ...(sxProps
-                        ? Array.isArray(sxProps.title)
-                            ? sxProps.title
-                            : [sxProps.title]
+                        ? Array.isArray(sxProps.value)
+                            ? sxProps.value
+                            : [sxProps.value]
                         : []),
                 ]}
             />
-        )}
-    </Paper>
+            {title && (
+                <Text
+                    name={title}
+                    variant="bold"
+                    sx={[
+                        {
+                            textAlign: 'center',
+                        },
+                        ...(sxProps
+                            ? Array.isArray(sxProps.title)
+                                ? sxProps.title
+                                : [sxProps.title]
+                            : []),
+                    ]}
+                />
+            )}
+        </Paper>
+    </Fade>
 );
 
 StatsItem.propTypes = {

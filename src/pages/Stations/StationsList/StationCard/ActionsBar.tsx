@@ -4,7 +4,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, IconButton } from '@mui/material';
 import { Station } from 'types';
-import { StationContext } from '../StationsList';
+import StationContext from '../StationContext';
 
 const ActionsBar = () => {
     const { id } = useContext<Partial<Station>>(StationContext);

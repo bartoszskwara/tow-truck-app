@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
-import { AccidentStatus } from '../../../types';
-import getStatusColor from './getStatusColor';
+import { AccidentStatus } from 'types';
+import getStatusColor from '../helpers/getStatusColor';
 
 interface Props {
     status: AccidentStatus;

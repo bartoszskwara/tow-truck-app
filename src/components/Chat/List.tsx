@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Box, SxProps } from '@mui/material';
+import {Box, SxProps, Zoom} from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import Avatar from 'components/Avatar';
 import Text from 'components/Text';
@@ -53,13 +53,15 @@ const List = ({ items, label, sx }: Props) => {
                             marginBottom: (theme) => theme.spacing(2),
                         }}
                     >
-                        <Avatar
-                            key={`${i.type}_${i.id}`}
-                            name={i.name}
-                            status={i.status}
-                            notifications={i.notifications}
-                            src={i.avatar}
-                        />
+                        <Zoom in={true}>
+                            <Avatar
+                                key={`${i.type}_${i.id}`}
+                                name={i.name}
+                                status={i.status}
+                                notifications={i.notifications}
+                                src={i.avatar}
+                            />
+                        </Zoom>
                     </Box>
                 ))}
             </Box>

@@ -1,5 +1,5 @@
 import { Theme } from '@mui/material/styles';
-import { AccidentStatus } from '../../../types';
+import { AccidentStatus } from 'types';
 
 type GetColors = (theme: Theme) => {
     [key in AccidentStatus]: string;

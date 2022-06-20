@@ -1,1 +1,1 @@
-export { default } from './Accidents';
+export { default } from './Accidents.container';

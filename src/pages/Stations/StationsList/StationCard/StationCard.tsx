@@ -1,11 +1,12 @@
+import React from 'react';
 import { Box } from '@mui/material';
 import ActionsBar from './ActionsBar';
 import Footer from './Footer';
 import Main from './Main';
 import Stats from './Stats';
 
-const StationCard = () => (
-    <Box>
+const StationCard = React.forwardRef<HTMLDivElement, {}>((props, ref) => (
+    <div ref={ref} {...props}>
         <Main />
         <Box
             sx={{
@@ -19,7 +20,8 @@ const StationCard = () => (
             <ActionsBar />
         </Box>
         <Footer />
-    </Box>
-);
+    </div>
+));
+StationCard.displayName = 'StationCard';
 
 export default StationCard;

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 import { Station } from 'types';
-import { StationContext } from '../StationsList';
+import StationContext from '../StationContext';
 
 const Title = () => {
     const { name, manager } = useContext<Partial<Station>>(StationContext);

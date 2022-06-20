@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Statistics from 'components/Statistics';
 import { Labels } from 'components/Statistics/Statistics.types';
 import { Station, Stats as StatsType } from 'types';
-import { StationContext } from '../StationsList';
+import StationContext from '../StationContext';
 
 const labels: Labels = {
     accidents: 'Accidents',

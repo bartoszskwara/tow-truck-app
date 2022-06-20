@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { useUser } from 'hooks';
 import { Accident } from 'types';
 import getRelativeDateTime from 'utilities/getRelativeDateTime';
-import Text from '../../../components/Text';
+import Text from 'components/Text';
 import InfoBox from './InfoBox';
 
 const AccidentInfo = ({
@@ -13,7 +13,7 @@ const AccidentInfo = ({
     const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     const arrivalDateTimeLabel = getRelativeDateTime(
-        new Date().getTime() + distance.time,
+        new Date().getTime() + distance?.time,
         language
     );
     return (
@@ -23,7 +23,7 @@ const AccidentInfo = ({
                     text: '{} miles',
                     name: 'Miles',
                 }}
-                headerValue={distance.value}
+                headerValue={distance?.value}
                 subtitleLabel={{
                     text: 'from: {}',
                     name: 'From',

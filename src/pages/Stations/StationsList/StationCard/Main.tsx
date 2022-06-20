@@ -3,9 +3,9 @@ import { AvatarGroup, Box, Button } from '@mui/material';
 import Avatar from 'components/Avatar/Avatar';
 import Text from 'components/Text';
 import { Station } from 'types';
-import { StationContext } from '../StationsList';
+import StationContext from '../StationContext';
 import Card from './Card';
-import Title from "./Title";
+import Title from './Title';
 
 const Main = () => {
     const { id, name, avatar, status, members, color } =

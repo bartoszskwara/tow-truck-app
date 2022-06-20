@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'app/store';
+import Statistics from 'components/Statistics';
 import { Labels } from 'components/Statistics/Statistics.types';
 import { Stats as StatsType } from 'types';
-import { useAppDispatch, useAppSelector } from '../../../app/store';
-import Statistics from '../../../components/Statistics';
 import { fetchStatistics } from '../dashboardSlice';
 
 const labels: Labels = {
@@ -15,10 +14,6 @@ const Stats = () => {
     const dispatch = useAppDispatch();
     const { stats, apiStatus } = useAppSelector(({ dashboard }) => dashboard);
     const statsLoading = apiStatus.stats === 'pending';
-
-    useEffect(() => {
-        dispatch(fetchStatistics());
-    }, []);
 
     return (
         <Statistics

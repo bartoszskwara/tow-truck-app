@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Box, SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import Text from 'components/Text';
-import {LabelProps, Variable} from '../../../components/Text/Text.types';
+import {LabelProps, Variable} from 'components/Text/Text.types';
 
 interface Props {
     headerLabel: LabelProps;
