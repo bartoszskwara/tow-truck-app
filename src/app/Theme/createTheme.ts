@@ -78,7 +78,6 @@ export default (mode: PaletteMode = 'dark') => {
             MuiPaper: {
                 styleOverrides: {
                     elevation0: {
-                        border: `1px solid ${theme.palette.border.default}`,
                         borderRadius: theme.spacing(1),
                         display: 'flex',
                         flexDirection: 'column',

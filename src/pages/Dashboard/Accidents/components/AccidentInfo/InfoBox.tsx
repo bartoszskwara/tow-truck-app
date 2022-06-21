@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import { Box, SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import Text from 'components/Text';
-import {LabelProps, Variable} from 'components/Text/Text.types';
+import { LabelProps, Variable } from 'components/Text/Text.types';
+import { AccidentStatus } from 'types';
+import getStatusColor from '../../helpers/getStatusColor';
 
 interface Props {
     headerLabel: LabelProps;
@@ -10,6 +12,7 @@ interface Props {
     subtitleLabel: LabelProps;
     subtitleValue: Variable;
     sx?: SxProps<Theme>;
+    status: AccidentStatus;
 }
 
 const InfoBox = ({
@@ -18,6 +21,7 @@ const InfoBox = ({
     subtitleLabel,
     subtitleValue,
     sx,
+    status,
 }: Props) => (
     <Box sx={[...(Array.isArray(sx) ? sx : [sx])]}>
         <Text
@@ -26,6 +30,9 @@ const InfoBox = ({
             variables={[headerValue]}
             sx={{
                 fontSize: (theme) => theme.spacing(2),
+                ...(status === 'missed'
+                    ? { color: (theme) => getStatusColor(theme, status) }
+                    : {}),
             }}
             variant="bold"
         />
@@ -44,12 +51,12 @@ const InfoBox = ({
 
 InfoBox.propTypes = {
     headerLabel: PropTypes.shape({
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
     }),
     headerValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     subtitleLabel: PropTypes.shape({
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
     }),
     subtitleValue: PropTypes.oneOfType([
@@ -68,10 +75,6 @@ InfoBox.propTypes = {
         PropTypes.func,
         PropTypes.object,
     ]),
-};
-
-InfoBox.defaultProps = {
-    address: {},
 };
 
 export default InfoBox;

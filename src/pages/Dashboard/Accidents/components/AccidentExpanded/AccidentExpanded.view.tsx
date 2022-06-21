@@ -62,7 +62,11 @@ const AccidentExpandedView = ({
                         }}
                     />
                 </Box>
-                <AccidentInfo datetime={datetime} distance={distance} />
+                <AccidentInfo
+                    datetime={datetime}
+                    distance={distance}
+                    status={status}
+                />
             </Box>
         </Box>
         <Box
@@ -116,7 +120,7 @@ AccidentExpandedView.propTypes = {
     mostRecent: PropTypes.bool,
     status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
     lastUpdateLabel: PropTypes.shape({
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
         variables: PropTypes.oneOfType([
             PropTypes.string,

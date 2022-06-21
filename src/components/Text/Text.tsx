@@ -43,7 +43,11 @@ Text.propTypes = {
         PropTypes.node,
     ]),
     name: PropTypes.string,
-    variables: PropTypes.array,
+    variables: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.node,
+    ]),
 };
 
 Text.defaultProps = {

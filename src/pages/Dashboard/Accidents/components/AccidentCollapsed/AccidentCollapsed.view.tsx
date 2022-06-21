@@ -25,6 +25,9 @@ const AccidentCollapsedView = ({ dateTimeLabel, distance, status }: Props) => (
             sx={{
                 fontSize: (theme) => theme.spacing(2),
                 flex: 1,
+                ...(status === 'missed'
+                    ? { color: (theme) => getStatusColor(theme, status) }
+                    : {}),
             }}
         />
         <Box
@@ -43,6 +46,9 @@ const AccidentCollapsedView = ({ dateTimeLabel, distance, status }: Props) => (
                 variant="bold"
                 sx={{
                     fontSize: (theme) => theme.spacing(2),
+                    ...(status === 'missed'
+                        ? { color: (theme) => getStatusColor(theme, status) }
+                        : {}),
                 }}
             />
             {status === 'new' && (
@@ -74,7 +80,7 @@ const AccidentCollapsedView = ({ dateTimeLabel, distance, status }: Props) => (
 
 AccidentCollapsedView.propTypes = {
     dateTimeLabel: PropTypes.shape({
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
         variables: PropTypes.oneOfType([
             PropTypes.string,

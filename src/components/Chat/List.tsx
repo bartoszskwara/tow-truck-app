@@ -72,7 +72,7 @@ const List = ({ items, label, sx }: Props) => {
 List.propTypes = {
     items: PropTypes.array,
     label: PropTypes.shape({
-        text: PropTypes.string,
+        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
     }),
     sx: PropTypes.oneOfType([

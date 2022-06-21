@@ -13,7 +13,10 @@ const AccidentsLoader = () => (
     >
         <Loader
             key={`acc_loader_top`}
-            sx={{ height: (theme) => theme.spacing(30) }}
+            sx={{
+                height: (theme) => theme.spacing(30),
+                borderRadius: (theme) => theme.spacing(1),
+            }}
         />
         {Array(5)
             .fill(0)

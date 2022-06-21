@@ -18,19 +18,15 @@ const Card = ({ color, type, children, sx }: Props) => {
                     ...(type === 'top'
                         ? {
                               borderTopLeftRadius: theme.spacing(1),
-                              borderTop: `1px solid ${theme.palette.border.default}`,
                               borderTopRightRadius: theme.spacing(1),
                           }
                         : {}),
                     ...(type === 'bottom'
                         ? {
                               borderBottomLeftRadius: theme.spacing(1),
-                              borderBottom: `1px solid ${theme.palette.border.default}`,
                               borderBottomRightRadius: theme.spacing(1),
                           }
                         : {}),
-                    borderLeft: `1px solid ${theme.palette.border.default}`,
-                    borderRight: `1px solid ${theme.palette.border.default}`,
                 }),
                 ...(Array.isArray(sx) ? sx : [sx]),
             ]}

@@ -30,7 +30,6 @@ const Accident = React.forwardRef<HTMLDivElement, Props>(
         <Box
             sx={(theme) => ({
                 borderRadius: theme.spacing(1),
-                border: `1px solid ${theme.palette.border.default}`,
                 background:
                     status === 'missed'
                         ? theme.palette.gray[0]
