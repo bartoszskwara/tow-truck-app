@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from 'app/store';
 import Statistics from 'components/Statistics';
 import { Labels } from 'components/Statistics/Statistics.types';
 import { Stats as StatsType } from 'types';
-import { fetchStatistics } from '../dashboardSlice';
+import { fetchStatistics } from '../store/dashboardSlice';
 
 const labels: Labels = {
     accidents: 'AccidentsHandled',

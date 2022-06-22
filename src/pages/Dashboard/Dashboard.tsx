@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Box, Theme } from '@mui/material';
 import { useAppDispatch } from '../../app/store';
 import Accidents from './Accidents';
-import { clearStore } from './dashboardSlice';
 import Map from './Map';
 import Stats from './Stats';
+import { clearStore } from './store/dashboardSlice';
 
 const Dashboard = () => {
     const dispatch = useAppDispatch();

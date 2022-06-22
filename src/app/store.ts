@@ -1,9 +1,9 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import chatReducer from '../components/Chat/chatSlice';
-import systemNotificationReducer from '../components/SystemNotification/systemNotificationSlice';
-import dashboardReducer from '../pages/Dashboard/dashboardSlice';
-import stationsReducer from '../pages/Stations/stationsSlice';
+import systemNotificationReducer from '../components/SystemNotification/store/systemNotificationSlice';
+import dashboardReducer from '../pages/Dashboard/store/dashboardSlice';
+import stationsReducer from '../pages/Stations/store/stationsSlice';
 import authReducer from './Auth/authSlice';
 import themeReducer from './Theme/themeSlice';
 import userReducer from './User/userSlice';

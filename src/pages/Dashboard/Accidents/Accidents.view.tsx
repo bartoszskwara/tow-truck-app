@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import { Box, Fade, SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import { Accident as AccidentType } from 'types';
-import Accident from './components/Accident';
-import AccidentsLoader from './components/AccidentsLoader';
+import AccidentCard from './AccidentCard';
+import AccidentContext from './AccidentContext';
+import Loader from './Loader';
 
 interface Props {
     sx?: SxProps<Theme>;
@@ -26,16 +27,17 @@ const AccidentsView = ({
             ...(Array.isArray(sx) ? sx : [sx]),
         ]}
     >
-        {loading && <AccidentsLoader />}
+        {loading && <Loader />}
         {accidents.map((item, index) => (
-            <Fade in={true} key={item.id} timeout={500}>
-                <Accident
-                    expanded={expanded === item.id || index === 0}
-                    mostRecent={index === 0}
-                    onClick={index !== 0 ? () => onClick(item) : undefined}
-                    {...item}
-                />
-            </Fade>
+            <AccidentContext.Provider key={item.id} value={item}>
+                <Fade in={true} timeout={500}>
+                    <AccidentCard
+                        expanded={expanded === item.id || index === 0}
+                        mostRecent={index === 0}
+                        onClick={index !== 0 ? () => onClick(item) : undefined}
+                    />
+                </Fade>
+            </AccidentContext.Provider>
         ))}
     </Box>
 );

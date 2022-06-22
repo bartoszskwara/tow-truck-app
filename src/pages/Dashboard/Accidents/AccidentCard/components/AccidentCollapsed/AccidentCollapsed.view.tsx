@@ -3,14 +3,25 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
 import { LabelProps } from 'components/Text/Text.types';
+import withContext from 'hoc/withContext';
 import { Accident } from 'types';
-import getStatusColor from '../../helpers/getStatusColor';
+import AccidentContext from '../../../AccidentContext';
+import getStatusColor from '../../../helpers/getStatusColor';
 
-interface Props extends Pick<Accident, 'distance' | 'status'> {
+interface Props {
+    dateTimeLabel: LabelProps;
+}
+interface PropsWithContext
+    extends Props,
+        Pick<Accident, 'distance' | 'status'> {
     dateTimeLabel: LabelProps;
 }
 
-const AccidentCollapsedView = ({ dateTimeLabel, distance, status }: Props) => (
+const AccidentCollapsedView = ({
+    dateTimeLabel,
+    distance,
+    status,
+}: PropsWithContext) => (
     <Box
         sx={{
             display: 'flex',
@@ -82,26 +93,30 @@ AccidentCollapsedView.propTypes = {
     dateTimeLabel: PropTypes.shape({
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
-        variables: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.node,
-        ]),
-    }),
+        variables: PropTypes.arrayOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number,
+                PropTypes.node,
+            ])
+        ),
+    }).isRequired,
     distance: PropTypes.shape({
-        value: PropTypes.number,
+        value: PropTypes.number.isRequired,
         station: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-        }),
-        time: PropTypes.number,
-    }),
-    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+        }).isRequired,
+        time: PropTypes.number.isRequired,
+    }).isRequired,
+    status: PropTypes.oneOf([
+        'new',
+        'in_progress',
+        'completed',
+        'missed',
+    ] as const).isRequired,
 };
 
-AccidentCollapsedView.defaultProps = {
-    distance: {},
-    status: 'new',
-};
-
-export default AccidentCollapsedView;
+export default withContext<Props, Accident>(AccidentContext)(
+    AccidentCollapsedView
+);

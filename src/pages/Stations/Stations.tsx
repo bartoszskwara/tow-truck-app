@@ -3,8 +3,8 @@ import { Box } from '@mui/material';
 import { useAppDispatch } from '../../app/store';
 import Map from './Map';
 import StationsList from './StationsList';
-import { clearStore } from './stationsSlice';
 import Stats from './Stats';
+import { clearStore } from './store/stationsSlice';
 
 const Stations = () => {
     const dispatch = useAppDispatch();

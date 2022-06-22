@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from 'app/store';
 import { Labels } from 'components/Statistics/Statistics.types';
 import { Stats as StatsType } from 'types';
 import Statistics from '../../../components/Statistics';
-import { fetchStatistics } from '../stationsSlice';
+import { fetchStatistics } from '../store/stationsSlice';
 
 const labels: Labels = {
     stations: 'Stations',

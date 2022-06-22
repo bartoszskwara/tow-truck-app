@@ -2,20 +2,26 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 import { LabelProps } from 'components/Text/Text.types';
+import withContext from 'hoc/withContext';
 import { Accident } from 'types';
+import AccidentContext from '../../../AccidentContext';
 import InfoBox from './InfoBox';
 
-interface Props extends Pick<Accident, 'distance' | 'status'> {
+interface Props {
     dateTimeLabel: LabelProps;
     arrivalDateTimeLabel: LabelProps;
 }
+
+interface PropsWithContext
+    extends Props,
+        Pick<Accident, 'distance' | 'status'> {}
 
 const AccidentInfoView = ({
     dateTimeLabel,
     arrivalDateTimeLabel,
     distance,
     status,
-}: Props) => (
+}: PropsWithContext) => (
     <Box sx={{ textAlign: 'right' }}>
         <InfoBox
             headerLabel={{
@@ -50,30 +56,39 @@ AccidentInfoView.propTypes = {
     dateTimeLabel: PropTypes.shape({
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
-        variables: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.node,
-        ]),
-    }),
+        variables: PropTypes.arrayOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number,
+                PropTypes.node,
+            ])
+        ),
+    }).isRequired,
     arrivalDateTimeLabel: PropTypes.shape({
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
-        variables: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.node,
-        ]),
-    }),
+        variables: PropTypes.arrayOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number,
+                PropTypes.node,
+            ])
+        ),
+    }).isRequired,
     distance: PropTypes.shape({
         value: PropTypes.number.isRequired,
         station: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
         }).isRequired,
         time: PropTypes.number.isRequired,
     }).isRequired,
-    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']).isRequired,
+    status: PropTypes.oneOf([
+        'new',
+        'in_progress',
+        'completed',
+        'missed',
+    ] as const).isRequired,
 };
 
-export default AccidentInfoView;
+export default withContext<Props, Accident>(AccidentContext)(AccidentInfoView);

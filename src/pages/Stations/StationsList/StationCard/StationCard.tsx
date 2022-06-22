@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import ActionsBar from './ActionsBar';
-import Footer from './Footer';
-import Main from './Main';
-import Stats from './Stats';
+import ActionsBar from './components/ActionsBar';
+import Footer from './components/Footer';
+import Main from './components/Main';
+import Stats from './components/Stats';
 
 const StationCard = React.forwardRef<HTMLDivElement, {}>((props, ref) => (
     <div ref={ref} {...props}>

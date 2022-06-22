@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AlertColor } from '@mui/material';
-import { TextProps } from '../Text/Text';
+import { TextProps } from 'components/Text';
 
 interface SystemNotificationStateType {
     notifications: {

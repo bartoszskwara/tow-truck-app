@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from 'app/store';
-import { fetchStations } from '../stationsSlice';
+import { fetchStations } from '../store/stationsSlice';
 import StationsListView from './StationsList.view';
 
 const StationsList = () => {

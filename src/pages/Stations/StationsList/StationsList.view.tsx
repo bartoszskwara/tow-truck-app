@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Fade } from '@mui/material';
 import { ApiStatus, OnlineStatus, Station } from 'types';
+import StationsLoader from './Loader';
 import StationCard from './StationCard';
 import StationContext from './StationContext';
-import StationsListLoader from './StationsListLoader';
 
 interface Props {
     stationsApiStatus: ApiStatus;
@@ -14,7 +14,7 @@ interface Props {
 const StationsListView = React.forwardRef<ReactNode, Props>(
     ({ stationsApiStatus, stations }, ref) => (
         <>
-            {stationsApiStatus === 'pending' && <StationsListLoader />}
+            {stationsApiStatus === 'pending' && <StationsLoader />}
             {stationsApiStatus === 'success' && (
                 <Box
                     component="ul"

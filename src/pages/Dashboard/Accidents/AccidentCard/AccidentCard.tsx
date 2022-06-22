@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
-import { Accident as AccidentType } from 'types';
-import AccidentCollapsed from './AccidentCollapsed';
-import AccidentExpanded from './AccidentExpanded';
-import ColorIndicator from './ColorIndicator';
+import withContext from 'hoc/withContext';
+import { Accident, Accident as AccidentType } from 'types';
+import AccidentContext from '../AccidentContext';
+import AccidentCollapsed from './components/AccidentCollapsed';
+import AccidentExpanded from './components/AccidentExpanded';
+import ColorIndicator from './components/ColorIndicator';
 
-interface Props extends Omit<AccidentType, 'id'> {
+interface Props {
     expanded: boolean;
     mostRecent: boolean;
     onClick?: () => void;
 }
+interface PropsWithContext extends Props, Omit<AccidentType, 'id'> {}
 
-const Accident = React.forwardRef<HTMLDivElement, Props>(
+const AccidentCard = React.forwardRef<HTMLDivElement, PropsWithContext>(
     (
         {
             datetime,
             address,
             distance,
-            lastUpdate,
             status,
             expanded,
             mostRecent,
@@ -43,7 +45,7 @@ const Accident = React.forwardRef<HTMLDivElement, Props>(
             ref={ref}
             {...rest}
         >
-            <ColorIndicator status={status} />
+            <ColorIndicator />
             <Box
                 sx={(theme) => ({
                     flex: 1,
@@ -51,28 +53,17 @@ const Accident = React.forwardRef<HTMLDivElement, Props>(
                 })}
             >
                 {expanded ? (
-                    <AccidentExpanded
-                        datetime={datetime}
-                        address={address}
-                        distance={distance}
-                        lastUpdate={lastUpdate}
-                        mostRecent={mostRecent}
-                        status={status}
-                    />
+                    <AccidentExpanded mostRecent={mostRecent} />
                 ) : (
-                    <AccidentCollapsed
-                        datetime={datetime}
-                        distance={distance}
-                        status={status}
-                    />
+                    <AccidentCollapsed />
                 )}
             </Box>
         </Box>
     )
 );
-Accident.displayName = 'Accident';
+AccidentCard.displayName = 'Accident';
 
-Accident.propTypes = {
+AccidentCard.propTypes = {
     datetime: PropTypes.number.isRequired,
     address: PropTypes.shape({
         city: PropTypes.string.isRequired,
@@ -89,7 +80,6 @@ Accident.propTypes = {
         }).isRequired,
         time: PropTypes.number.isRequired,
     }).isRequired,
-    lastUpdate: PropTypes.number.isRequired,
     status: PropTypes.oneOf([
         'new',
         'in_progress',
@@ -101,9 +91,9 @@ Accident.propTypes = {
     onClick: PropTypes.func,
 };
 
-Accident.defaultProps = {
+AccidentCard.defaultProps = {
     status: 'new',
     expanded: false,
 };
 
-export default Accident;
+export default withContext<Props, Accident>(AccidentContext)(AccidentCard);

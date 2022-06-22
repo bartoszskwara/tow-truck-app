@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { openNotification } from 'components/SystemNotification/systemNotificationSlice';
+import { openNotification } from 'components/SystemNotification/store/systemNotificationSlice';
 import { ApiStatus, ChatItem } from 'types';
 
 interface StateType {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import Loader from 'components/Loader';
 
-const StationsListLoader = () => (
+const StationsLoader = () => (
     <Box
         sx={{
             display: 'flex',
@@ -25,4 +25,4 @@ const StationsListLoader = () => (
     </Box>
 );
 
-export default StationsListLoader;
+export default StationsLoader;

@@ -1,25 +1,24 @@
 import PropTypes from 'prop-types';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button } from '@mui/material';
 import Text from 'components/Text';
 import { LabelProps } from 'components/Text/Text.types';
+import withContext from 'hoc/withContext';
 import { Accident } from 'types';
+import AccidentContext from '../../../AccidentContext';
 import AccidentInfo from '../AccidentInfo';
-import Address from '../Address';
+import Address from './Address';
 
-interface Props extends Omit<Accident, 'id' | 'lastUpdate'> {
+interface Props {
     mostRecent: boolean;
     lastUpdateLabel: LabelProps;
 }
+interface PropsWithContext extends Props, Pick<Accident, 'status'> {}
 
 const AccidentExpandedView = ({
-    datetime,
-    address,
-    distance,
     mostRecent,
-    status,
     lastUpdateLabel,
-}: Props) => (
+    status,
+}: PropsWithContext) => (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Box>
             {mostRecent && (
@@ -49,7 +48,7 @@ const AccidentExpandedView = ({
                         justifyContent: 'space-between',
                     }}
                 >
-                    <Address {...address} />
+                    <Address />
                     <Text
                         text="last update: {}"
                         name="LastUpdate"
@@ -62,11 +61,7 @@ const AccidentExpandedView = ({
                         }}
                     />
                 </Box>
-                <AccidentInfo
-                    datetime={datetime}
-                    distance={distance}
-                    status={status}
-                />
+                <AccidentInfo />
             </Box>
         </Box>
         <Box
@@ -101,37 +96,26 @@ const AccidentExpandedView = ({
 );
 
 AccidentExpandedView.propTypes = {
-    datetime: PropTypes.number,
-    address: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        region: PropTypes.string.isRequired,
-        zipcode: PropTypes.string.isRequired,
-        street: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-    }),
-    distance: PropTypes.shape({
-        value: PropTypes.number,
-        station: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-        }),
-        time: PropTypes.number,
-    }),
-    mostRecent: PropTypes.bool,
-    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']),
+    mostRecent: PropTypes.bool.isRequired,
+    status: PropTypes.oneOf([
+        'new',
+        'in_progress',
+        'completed',
+        'missed',
+    ] as const).isRequired,
     lastUpdateLabel: PropTypes.shape({
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         name: PropTypes.string,
-        variables: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.node,
-        ]),
-    }),
+        variables: PropTypes.arrayOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number,
+                PropTypes.node,
+            ])
+        ),
+    }).isRequired,
 };
 
-AccidentExpandedView.defaultProps = {
-    status: 'new',
-};
-
-export default AccidentExpandedView;
+export default withContext<Props, Accident>(AccidentContext)(
+    AccidentExpandedView
+);

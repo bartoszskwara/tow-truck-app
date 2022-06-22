@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
+import withContext from 'hoc/withContext';
 import { useUser } from 'hooks';
 import { Accident } from 'types';
 import getRelativeDateTime from 'utilities/getRelativeDateTime';
+import AccidentContext from '../../../AccidentContext';
 import AccidentInfoView from './AccidentInfo.view';
 
 const AccidentInfo = ({
     datetime,
     distance,
-    status,
-}: Pick<Accident, 'datetime' | 'distance' | 'status'>) => {
+}: Pick<Accident, 'datetime' | 'distance'>) => {
     const { preferences: { language } = { language: 'en' } } = useUser();
     const dateTimeLabel = getRelativeDateTime(datetime, language);
     const arrivalDateTimeLabel = getRelativeDateTime(
@@ -19,27 +20,20 @@ const AccidentInfo = ({
         <AccidentInfoView
             dateTimeLabel={dateTimeLabel}
             arrivalDateTimeLabel={arrivalDateTimeLabel}
-            distance={distance}
-            status={status}
         />
     );
 };
 
 AccidentInfo.propTypes = {
-    datetime: PropTypes.number,
+    datetime: PropTypes.number.isRequired,
     distance: PropTypes.shape({
-        value: PropTypes.number,
+        value: PropTypes.number.isRequired,
         station: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-        }),
-        time: PropTypes.number,
-    }),
-    status: PropTypes.oneOf(['new', 'in_progress', 'completed', 'missed']).isRequired,
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+        }).isRequired,
+        time: PropTypes.number.isRequired,
+    }).isRequired,
 };
 
-AccidentInfo.defaultProps = {
-    distance: {},
-};
-
-export default AccidentInfo;
+export default withContext(AccidentContext)(AccidentInfo);

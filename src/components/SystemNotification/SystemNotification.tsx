@@ -3,7 +3,7 @@ import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import Text from '../Text';
-import { closeNotification } from './systemNotificationSlice';
+import { closeNotification } from './store/systemNotificationSlice';
 
 const SystemNotification = () => {
     const dispatch = useAppDispatch();

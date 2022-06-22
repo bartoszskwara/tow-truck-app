@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
-import { useAppDispatch, useAppSelector } from '../../../app/store';
-import { fetchAccidents } from '../dashboardSlice';
+import { useAppDispatch, useAppSelector } from 'app/store';
+import { fetchAccidents } from '../store/dashboardSlice';
 import AccidentsView from './Accidents.view';
 
 interface Props {

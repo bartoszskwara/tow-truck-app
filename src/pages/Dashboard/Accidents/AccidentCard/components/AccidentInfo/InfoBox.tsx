@@ -4,7 +4,7 @@ import { Theme } from '@mui/material/styles';
 import Text from 'components/Text';
 import { LabelProps, Variable } from 'components/Text/Text.types';
 import { AccidentStatus } from 'types';
-import getStatusColor from '../../helpers/getStatusColor';
+import getStatusColor from '../../../helpers/getStatusColor';
 
 interface Props {
     headerLabel: LabelProps;

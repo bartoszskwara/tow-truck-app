@@ -1,42 +1,42 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { openNotification } from 'components/SystemNotification/systemNotificationSlice';
-import { ApiStatus, Station, Stats } from 'types';
+import { openNotification } from 'components/SystemNotification/store/systemNotificationSlice';
+import { Accident, ApiStatus, Stats } from 'types';
 
-interface StationsStateType {
-    stations: Station[];
+interface StateType {
+    accidents: Accident[];
     stats: Stats[];
     apiStatus: {
-        stations: ApiStatus;
+        accidents: ApiStatus;
         stats: ApiStatus;
     };
 }
 
-const initialState: StationsStateType = {
-    stations: [],
+const initialState: StateType = {
+    accidents: [],
     stats: [],
     apiStatus: {
-        stations: 'idle',
+        accidents: 'idle',
         stats: 'idle',
     },
 };
 
 const { actions, reducer } = createSlice({
-    name: 'stations',
+    name: 'accidents',
     initialState,
     reducers: {
         clearStore: () => initialState,
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchStations.pending, (state) => {
-                state.apiStatus.stations = 'pending';
+            .addCase(fetchAccidents.pending, (state) => {
+                state.apiStatus.accidents = 'pending';
             })
-            .addCase(fetchStations.fulfilled, (state, action) => {
-                state.apiStatus.stations = 'success';
-                state.stations = action.payload;
+            .addCase(fetchAccidents.fulfilled, (state, action) => {
+                state.apiStatus.accidents = 'success';
+                state.accidents = action.payload;
             })
-            .addCase(fetchStations.rejected, (state) => {
-                state.apiStatus.stations = 'failed';
+            .addCase(fetchAccidents.rejected, (state) => {
+                state.apiStatus.accidents = 'failed';
             })
             .addCase(fetchStatistics.pending, (state) => {
                 state.apiStatus.stats = 'pending';
@@ -51,21 +51,21 @@ const { actions, reducer } = createSlice({
     },
 });
 
-export const fetchStations = createAsyncThunk(
-    'stations/fetch_stations',
+export const fetchAccidents = createAsyncThunk(
+    'dashboard/fetch_accidents',
     async (_, { dispatch }) => {
-        await new Promise((res) => setTimeout(res, 2000));
+        await new Promise((res) => setTimeout(res, 1000));
         try {
-            const response = await fetch('./mockApi/stations.json').then(
+            const response = await fetch('./mockApi/accidents.json').then(
                 (res) => res.json()
             );
-            return response.stations;
+            return response.accidents;
         } catch (e) {
             dispatch(
                 openNotification({
                     textProps: {
-                        text: 'Fetching stations failed',
-                        name: 'FetchingStationsFailed',
+                        text: 'Fetching accidents failed',
+                        name: 'FetchingAccidentsFailed',
                     },
                     severity: 'error',
                 })
@@ -76,12 +76,12 @@ export const fetchStations = createAsyncThunk(
 );
 
 export const fetchStatistics = createAsyncThunk(
-    'stations/fetch_statistics',
+    'dashboard/fetch_statistics',
     async (_, { dispatch }) => {
         await new Promise((res) => setTimeout(res, 2800));
         try {
-            const response = await fetch('./mockApi/stations_stats.json').then(
-                (res) => res.json()
+            const response = await fetch('./mockApi/stats.json').then((res) =>
+                res.json()
             );
             return response.stats;
         } catch (e) {
