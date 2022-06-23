@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 import withContext from 'hoc/withContext';
+import { AddressPropType } from 'propTypes';
 import { Accident } from 'types';
 import AccidentContext from '../../../AccidentContext';
 
@@ -20,13 +20,7 @@ const Address = ({
 );
 
 Address.propTypes = {
-    address: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        region: PropTypes.string.isRequired,
-        zipcode: PropTypes.string.isRequired,
-        street: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-    }).isRequired,
+    address: AddressPropType.isRequired,
 };
 
 export default withContext(AccidentContext)(Address);

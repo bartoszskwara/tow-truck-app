@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
-import { Box, Fade, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
-import { Accident as AccidentType } from 'types';
+import { Box, Fade } from '@mui/material';
+import { AccidentPropType, SxPropType } from 'propTypes';
+import { Accident as AccidentType, Sx } from 'types';
 import AccidentCard from './AccidentCard';
 import AccidentContext from './AccidentContext';
 import Loader from './Loader';
 
 interface Props {
-    sx?: SxProps<Theme>;
+    sx?: Sx;
     accidents: AccidentType[];
     loading: boolean;
-    expanded: number | null;
+    expanded?: number | null;
     onClick: (item: AccidentType) => void;
 }
 
@@ -43,17 +43,11 @@ const AccidentsView = ({
 );
 
 AccidentsView.propTypes = {
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
+    accidents: PropTypes.arrayOf(AccidentPropType.isRequired).isRequired,
+    loading: PropTypes.bool.isRequired,
+    expanded: PropTypes.number,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default AccidentsView;

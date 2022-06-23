@@ -1,9 +1,13 @@
-import { useMemo, ElementType } from 'react';
-import PropTypes from 'prop-types';
+import { ElementType, useMemo } from 'react';
 import { Typography, TypographyProps } from '@mui/material';
 import labels from 'assets/labels';
 import { useUser } from 'hooks';
-import { LabelProps } from './Text.types';
+import {
+    LabelNamePropType,
+    LabelProps,
+    LabelTextPropType,
+    LabelVariablePropType,
+} from './Text.types';
 
 const generateId = () => Math.random().toString(36).slice(2);
 
@@ -37,17 +41,9 @@ const Text = ({ text, name, variables, ...rest }: TextProps) => {
 };
 
 Text.propTypes = {
-    text: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.node,
-    ]),
-    name: PropTypes.string,
-    variables: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.node,
-    ]),
+    text: LabelTextPropType,
+    name: LabelNamePropType,
+    variables: LabelVariablePropType,
 };
 
 Text.defaultProps = {

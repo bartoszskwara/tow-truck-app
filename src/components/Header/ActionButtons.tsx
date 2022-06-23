@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Box, IconButton, SxProps } from '@mui/material';
-import { styled, Theme } from '@mui/material/styles';
+import { Box, IconButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { SxPropType } from 'propTypes';
+import { Sx } from 'types';
 import Badge from './Badge';
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
@@ -15,7 +17,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 interface Props {
     newMessages: number;
     newNotifications: number;
-    sx: SxProps<Theme>;
+    sx: Sx;
 }
 
 const ActionButtons = ({
@@ -60,17 +62,7 @@ const ActionButtons = ({
 ActionButtons.propTypes = {
     newMessages: PropTypes.number,
     newNotifications: PropTypes.number,
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
 };
 
 export default ActionButtons;

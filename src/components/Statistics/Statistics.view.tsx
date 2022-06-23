@@ -1,9 +1,13 @@
+import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import StatsItem from 'components/StatsItem';
 import { Stats as StatsType } from 'types';
 import StatisticsLoader from './components/Loader';
 import StatsValue from './components/StatsValue';
-import { StatisticsViewProps } from './Statistics.types';
+import {
+    StatisticsViewProps,
+    StatisticsViewPropTypes,
+} from './Statistics.types';
 
 const StatisticsView = ({
     sx,
@@ -34,5 +38,7 @@ const StatisticsView = ({
             ))}
     </Box>
 );
+
+StatisticsView.propTypes = PropTypes.shape(StatisticsViewPropTypes).isRequired;
 
 export default StatisticsView;

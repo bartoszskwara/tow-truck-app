@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
-import Text from 'components/Text';
-import { LabelProps } from 'components/Text/Text.types';
+import Text, { LabelProps, LabelPropType } from 'components/Text';
 import withContext from 'hoc/withContext';
+import { AccidentStatusPropType } from 'propTypes';
 import { Accident } from 'types';
 import AccidentContext from '../../../AccidentContext';
 import AccidentInfo from '../AccidentInfo';
@@ -97,23 +97,8 @@ const AccidentExpandedView = ({
 
 AccidentExpandedView.propTypes = {
     mostRecent: PropTypes.bool.isRequired,
-    status: PropTypes.oneOf([
-        'new',
-        'in_progress',
-        'completed',
-        'missed',
-    ] as const).isRequired,
-    lastUpdateLabel: PropTypes.shape({
-        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        name: PropTypes.string,
-        variables: PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.string,
-                PropTypes.number,
-                PropTypes.node,
-            ])
-        ),
-    }).isRequired,
+    lastUpdateLabel: LabelPropType.isRequired,
+    status: AccidentStatusPropType.isRequired,
 };
 
 export default withContext<Props, Accident>(AccidentContext)(

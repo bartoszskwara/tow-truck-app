@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
 import { AvatarGroup, Box, Button } from '@mui/material';
 import Avatar from 'components/Avatar/Avatar';
 import Text from 'components/Text';
 import withContext from 'hoc/withContext';
+import { OnlineStatusPropType, PersonPropType } from 'propTypes';
 import { Station } from 'types';
 import StationContext from '../../StationContext';
 import Card from './Card';
@@ -95,5 +97,13 @@ const Main = ({
         </Box>
     </Card>
 );
+
+Main.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    status: OnlineStatusPropType.isRequired,
+    members: PropTypes.arrayOf(PersonPropType.isRequired).isRequired,
+};
 
 export default withContext(StationContext)(Main);

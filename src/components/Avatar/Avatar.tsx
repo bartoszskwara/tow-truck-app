@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Avatar as MuiAvatar, Badge, SxProps, Theme } from '@mui/material';
+import { OnlineStatusPropType } from 'propTypes';
 import { OnlineStatus } from 'types';
 import getStatusBgColor from './getStatusBgColor';
 
@@ -83,7 +84,8 @@ const Avatar = React.forwardRef<HTMLDivElement, Props>(
                             {
                                 width: (theme) => theme.spacing(5.5),
                                 height: (theme) => theme.spacing(5.5),
-                                border: (theme) => `2px solid ${theme.palette.border.contrastInverted}`,
+                                border: (theme) =>
+                                    `2px solid ${theme.palette.border.contrastInverted}`,
                                 boxSizing: 'border-box',
                             },
                             ...(sxProps
@@ -103,7 +105,7 @@ Avatar.displayName = 'Avatar';
 Avatar.propTypes = {
     name: PropTypes.string,
     src: PropTypes.string,
-    status: PropTypes.oneOf(['online', 'offline', 'driving']),
+    status: OnlineStatusPropType,
     notifications: PropTypes.number,
 };
 

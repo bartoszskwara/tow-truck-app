@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -39,5 +40,9 @@ const ActionsBar = ({ id }: Pick<Station, 'id'>) => (
         </IconButton>
     </Box>
 );
+
+ActionsBar.propTypes = {
+    id: PropTypes.number.isRequired,
+};
 
 export default withContext(StationContext)(ActionsBar);

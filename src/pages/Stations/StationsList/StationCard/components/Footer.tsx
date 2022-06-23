@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 import withContext from 'hoc/withContext';
+import { AddressPropType } from 'propTypes';
 import { Station } from 'types';
 import StationContext from '../../StationContext';
 import Card from './Card';
@@ -28,5 +29,9 @@ const Footer = ({
         </Box>
     </Card>
 );
+
+Footer.propTypes = {
+    address: AddressPropType.isRequired,
+};
 
 export default withContext(StationContext)(Footer);

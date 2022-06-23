@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import withContext from 'hoc/withContext';
+import { AccidentStatusPropType } from 'propTypes';
 import { Accident } from 'types';
 import AccidentContext from '../../AccidentContext';
 import getStatusColor from '../../helpers/getStatusColor';
@@ -17,12 +17,7 @@ const ColorIndicator = ({ status }: Pick<Accident, 'status'>) => (
 );
 
 ColorIndicator.propTypes = {
-    status: PropTypes.oneOf([
-        'new',
-        'in_progress',
-        'completed',
-        'missed',
-    ] as const).isRequired,
+    status: AccidentStatusPropType.isRequired,
 };
 
 export default withContext(AccidentContext)(ColorIndicator);

@@ -1,4 +1,4 @@
-import { LabelProps } from 'components/Text/Text.types';
+import { LabelProps } from 'components/Text';
 
 export default (timestamp: number, locales: string): LabelProps => {
     const now = new Date().getTime();

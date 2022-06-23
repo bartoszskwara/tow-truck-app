@@ -1,4 +1,6 @@
-import { Address, OnlineStatus, Stats } from 'types';
+import { Address } from './Address';
+import { OnlineStatus } from './OnlineStatus';
+import { Stats } from './Stats';
 
 type Person = {
     id: number;

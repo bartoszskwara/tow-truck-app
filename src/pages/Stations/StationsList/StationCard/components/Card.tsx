@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
-import { Box, SxProps, Theme } from '@mui/material';
+import PropTypes from 'prop-types';
+import { Box } from '@mui/material';
 import withContext from 'hoc/withContext';
-import { Station } from 'types';
+import { SxPropType } from 'propTypes';
+import { Station, Sx } from 'types';
 import StationContext from '../../StationContext';
 
 interface Props {
     type: 'top' | 'bottom';
     children: ReactNode;
-    sx?: SxProps<Theme>;
+    sx?: Sx;
 }
 interface PropsWithContext extends Props, Pick<Station, 'color'> {}
 
@@ -59,5 +61,12 @@ const Card = ({ color, type, children, sx }: PropsWithContext) => (
         </Box>
     </Box>
 );
+
+Card.propTypes = {
+    color: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['top', 'bottom'] as const).isRequired,
+    children: PropTypes.node,
+    sx: SxPropType,
+};
 
 export default withContext<Props, Station>(StationContext)(Card);

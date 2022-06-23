@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { Box, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { Box } from '@mui/material';
+import { SxPropType } from 'propTypes';
+import { Sx } from 'types';
 
 interface Props {
-    sx?: SxProps<Theme>;
+    sx?: Sx;
 }
 
 const Map = ({ sx }: Props) => (
@@ -11,17 +11,7 @@ const Map = ({ sx }: Props) => (
 );
 
 Map.propTypes = {
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
 };
 
 export default Map;

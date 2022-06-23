@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import withContext from 'hoc/withContext';
+import {
+    AccidentStatusPropType,
+    AddressPropType,
+    DistancePropType,
+} from 'propTypes';
 import { Accident, Accident as AccidentType } from 'types';
 import AccidentContext from '../AccidentContext';
 import AccidentCollapsed from './components/AccidentCollapsed';
@@ -65,27 +70,9 @@ AccidentCard.displayName = 'Accident';
 
 AccidentCard.propTypes = {
     datetime: PropTypes.number.isRequired,
-    address: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        region: PropTypes.string.isRequired,
-        zipcode: PropTypes.string.isRequired,
-        street: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-    }).isRequired,
-    distance: PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        station: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-        }).isRequired,
-        time: PropTypes.number.isRequired,
-    }).isRequired,
-    status: PropTypes.oneOf([
-        'new',
-        'in_progress',
-        'completed',
-        'missed',
-    ] as const).isRequired,
+    address: AddressPropType.isRequired,
+    distance: DistancePropType.isRequired,
+    status: AccidentStatusPropType.isRequired,
     expanded: PropTypes.bool.isRequired,
     mostRecent: PropTypes.bool.isRequired,
     onClick: PropTypes.func,

@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
-import {Box, SxProps, Zoom} from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { Box, Zoom } from '@mui/material';
 import Avatar from 'components/Avatar';
-import Text from 'components/Text';
-import { LabelProps } from 'components/Text/Text.types';
-import { ChatItem } from 'types';
+import Text, { LabelProps, LabelPropType } from 'components/Text';
+import { SxPropType } from 'propTypes';
+import { ChatItem, Sx } from 'types';
 
 interface Props {
     items: ChatItem[];
     label: LabelProps;
-    sx?: SxProps<Theme>;
+    sx?: Sx;
 }
 
 const List = ({ items, label, sx }: Props) => {
@@ -71,21 +70,8 @@ const List = ({ items, label, sx }: Props) => {
 
 List.propTypes = {
     items: PropTypes.array,
-    label: PropTypes.shape({
-        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        name: PropTypes.string,
-    }),
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    label: LabelPropType.isRequired,
+    sx: SxPropType,
 };
 
 List.defaultProps = {

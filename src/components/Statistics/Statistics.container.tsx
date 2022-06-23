@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { StatisticsViewProps } from './Statistics.types';
+import PropTypes from 'prop-types';
+import {
+    StatisticsViewProps,
+    StatisticsViewPropTypes,
+} from './Statistics.types';
 import StatisticsView from './Statistics.view';
 
 interface Props extends StatisticsViewProps {
@@ -14,6 +18,11 @@ const Statistics = ({ fetchData, ...rest }: Props) => {
     }, []);
 
     return <StatisticsView {...rest} />;
+};
+
+Statistics.propTypes = {
+    fetchData: PropTypes.func.isRequired,
+    ...StatisticsViewPropTypes,
 };
 
 export default Statistics;

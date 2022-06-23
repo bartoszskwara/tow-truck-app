@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Chat from 'components/Chat';
 import Header from 'components/Header';

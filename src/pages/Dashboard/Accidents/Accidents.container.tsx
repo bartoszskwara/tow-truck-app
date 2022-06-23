@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { SxProps } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from 'app/store';
+import { SxPropType } from 'propTypes';
 import { fetchAccidents } from '../store/dashboardSlice';
 import AccidentsView from './Accidents.view';
 
@@ -36,17 +36,7 @@ const Accidents = ({ sx }: Props) => {
 };
 
 Accidents.propTypes = {
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
 };
 
 export default Accidents;

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ApiStatus } from 'types';
 import { openNotification } from 'components/SystemNotification/store/systemNotificationSlice';
+import { ApiStatus } from 'types';
 import { removeTokenFromStorageAndState } from '../Auth/authSlice';
 
 export interface User {

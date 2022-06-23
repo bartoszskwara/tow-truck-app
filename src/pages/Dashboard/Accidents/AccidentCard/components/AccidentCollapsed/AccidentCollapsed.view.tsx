@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button } from '@mui/material';
-import Text from 'components/Text';
-import { LabelProps } from 'components/Text/Text.types';
+import Text, { LabelProps, LabelPropType } from 'components/Text';
 import withContext from 'hoc/withContext';
+import { AccidentStatusPropType, DistancePropType } from 'propTypes';
 import { Accident } from 'types';
 import AccidentContext from '../../../AccidentContext';
 import getStatusColor from '../../../helpers/getStatusColor';
@@ -90,31 +89,9 @@ const AccidentCollapsedView = ({
 );
 
 AccidentCollapsedView.propTypes = {
-    dateTimeLabel: PropTypes.shape({
-        text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        name: PropTypes.string,
-        variables: PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.string,
-                PropTypes.number,
-                PropTypes.node,
-            ])
-        ),
-    }).isRequired,
-    distance: PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        station: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-        }).isRequired,
-        time: PropTypes.number.isRequired,
-    }).isRequired,
-    status: PropTypes.oneOf([
-        'new',
-        'in_progress',
-        'completed',
-        'missed',
-    ] as const).isRequired,
+    dateTimeLabel: LabelPropType.isRequired,
+    distance: DistancePropType.isRequired,
+    status: AccidentStatusPropType.isRequired,
 };
 
 export default withContext<Props, Accident>(AccidentContext)(

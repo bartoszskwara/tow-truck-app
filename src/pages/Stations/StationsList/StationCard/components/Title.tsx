@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import Text from 'components/Text';
 import withContext from 'hoc/withContext';
+import { PersonPropType } from 'propTypes';
 import { Station } from 'types';
 import StationContext from '../../StationContext';
 
@@ -30,11 +31,7 @@ const Title = ({ name, manager }: Pick<Station, 'name' | 'manager'>) => (
 
 Title.propTypes = {
     name: PropTypes.string.isRequired,
-    manager: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        avatar: PropTypes.string,
-    }).isRequired,
+    manager: PersonPropType.isRequired,
 };
 
 export default withContext(StationContext)(Title);

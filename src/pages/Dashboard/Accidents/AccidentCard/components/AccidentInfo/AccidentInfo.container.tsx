@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import withContext from 'hoc/withContext';
 import { useUser } from 'hooks';
+import { DistancePropType } from 'propTypes';
 import { Accident } from 'types';
 import getRelativeDateTime from 'utilities/getRelativeDateTime';
 import AccidentContext from '../../../AccidentContext';
@@ -26,14 +27,7 @@ const AccidentInfo = ({
 
 AccidentInfo.propTypes = {
     datetime: PropTypes.number.isRequired,
-    distance: PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        station: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-        }).isRequired,
-        time: PropTypes.number.isRequired,
-    }).isRequired,
+    distance: DistancePropType.isRequired,
 };
 
 export default withContext(AccidentContext)(AccidentInfo);

@@ -1,20 +1,9 @@
-import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import { Fade, Paper, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import React from 'react';
+import { Fade, Paper } from '@mui/material';
 import Text from 'components/Text';
+import { StatsItemProps, StatsItemPropTypes } from './StatsItem.types';
 
-export interface Props {
-    title: string;
-    value: string | ReactNode;
-    sxProps?: {
-        root?: SxProps<Theme>;
-        value?: SxProps<Theme>;
-        title?: SxProps<Theme>;
-    };
-}
-
-const StatsItem = ({ title, value, sxProps }: Props) => (
+const StatsItem = ({ title, value, sxProps }: StatsItemProps) => (
     <Fade in={true}>
         <Paper
             elevation={0}
@@ -59,13 +48,6 @@ const StatsItem = ({ title, value, sxProps }: Props) => (
     </Fade>
 );
 
-StatsItem.propTypes = {
-    title: PropTypes.string,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.node,
-    ]),
-};
+StatsItem.propTypes = StatsItemPropTypes.isRequired;
 
 export default StatsItem;

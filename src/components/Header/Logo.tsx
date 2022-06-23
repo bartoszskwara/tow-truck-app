@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import { Avatar, Box, SxProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { Avatar, Box } from '@mui/material';
+import { SxPropType } from 'propTypes';
+import { Sx } from 'types';
 
 interface Props {
     src: string;
     companyName: string;
-    sx: SxProps<Theme>;
+    sx: Sx;
 }
 
 const Logo = ({ src, companyName, sx }: Partial<Props>) => (
@@ -45,17 +46,7 @@ const Logo = ({ src, companyName, sx }: Partial<Props>) => (
 Logo.propTypes = {
     src: PropTypes.string,
     companyName: PropTypes.string,
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
 };
 
 export default Logo;

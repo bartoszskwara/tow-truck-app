@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Box, SxProps, Theme } from '@mui/material';
+import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { SxPropType } from 'propTypes';
+import { Sx } from 'types';
 import Text from '../Text';
 
 const StyledNavLink = styled(NavLink)(({ theme }) => ({
@@ -17,7 +18,7 @@ const StyledText = styled(Text, {
 }));
 
 interface Props {
-    sx: SxProps<Theme>;
+    sx: Sx;
 }
 
 const Navigation = ({ sx }: Partial<Props>) => {
@@ -64,17 +65,7 @@ const Navigation = ({ sx }: Partial<Props>) => {
 };
 
 Navigation.propTypes = {
-    sx: PropTypes.oneOfType([
-        PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                PropTypes.func,
-                PropTypes.object,
-                PropTypes.bool,
-            ])
-        ),
-        PropTypes.func,
-        PropTypes.object,
-    ]),
+    sx: SxPropType,
 };
 
 export default Navigation;

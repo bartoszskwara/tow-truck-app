@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import Statistics from 'components/Statistics';
 import { Labels } from 'components/Statistics/Statistics.types';
 import withContext from 'hoc/withContext';
+import { StatsPropType } from 'propTypes';
 import { Station, Stats as StatsType } from 'types';
 import StationContext from '../../StationContext';
 
@@ -34,5 +36,9 @@ const Stats = ({ stats }: Pick<Station, 'stats'>) => (
         }}
     />
 );
+
+Stats.propTypes = {
+    stats: PropTypes.arrayOf(StatsPropType.isRequired).isRequired,
+};
 
 export default withContext(StationContext)(Stats);

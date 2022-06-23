@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import CountUp from 'react-countup';
 import { Box } from '@mui/material';
+import { StatsPropType } from 'propTypes';
 import { Stats as StatsType } from 'types';
 
 interface Props {
@@ -34,17 +35,9 @@ const StatsValueView = ({ value, max, item }: Props) => {
 };
 
 StatsValueView.propTypes = {
-    value: PropTypes.number,
+    value: PropTypes.number.isRequired,
     max: PropTypes.number,
-    item: PropTypes.oneOfType([
-        PropTypes.shape({
-            value: PropTypes.number,
-        }),
-        PropTypes.shape({
-            available: PropTypes.number,
-            all: PropTypes.number,
-        }),
-    ]),
+    item: StatsPropType.isRequired,
 };
 
 export default StatsValueView;

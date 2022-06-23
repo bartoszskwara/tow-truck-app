@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { StatsPropType } from 'propTypes';
 import { Stats as StatsType } from 'types';
-import StatsValueView from "./StatsValue.view";
+import StatsValueView from './StatsValue.view';
 
 interface Props {
     item: StatsType;
@@ -20,19 +20,11 @@ const StatsValueContainer = ({ item }: Props) => {
         }
     }, []);
 
-    return <StatsValueView value={value} max={max} item={item} />
+    return <StatsValueView value={value} max={max} item={item} />;
 };
 
 StatsValueContainer.propTypes = {
-    item: PropTypes.oneOfType([
-        PropTypes.shape({
-            value: PropTypes.number,
-        }),
-        PropTypes.shape({
-            available: PropTypes.number,
-            all: PropTypes.number,
-        }),
-    ]),
+    item: StatsPropType.isRequired,
 };
 
 export default StatsValueContainer;
