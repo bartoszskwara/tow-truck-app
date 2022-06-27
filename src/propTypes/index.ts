@@ -12,3 +12,4 @@ export {
 } from './Station';
 export { Stats as StatsPropType } from './Stats';
 export { Sx as SxPropType } from './Sx';
+export { ChatItem as ChatItemPropType } from './ChatItem';

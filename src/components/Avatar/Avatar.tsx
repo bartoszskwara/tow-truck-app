@@ -9,7 +9,7 @@ interface Props {
     name?: string;
     src?: string | null;
     status?: OnlineStatus;
-    notifications?: number;
+    notifications?: number | null;
     sxProps?: {
         status?: SxProps<Theme>;
         notifications?: SxProps<Theme>;

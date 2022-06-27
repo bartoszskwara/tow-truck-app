@@ -8,5 +8,5 @@ export type ChatItem = {
     name: string;
     avatar: string;
     type: ChatType;
-    notifications?: number;
+    notifications?: number | null;
 };

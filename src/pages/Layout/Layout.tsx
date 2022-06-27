@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
-import Chat from 'components/Chat';
+import ChatContainer from 'components/Chat';
 import Header from 'components/Header';
 import useAuth from 'hooks/useAuth';
 import Dashboard from 'pages/Dashboard';
@@ -59,7 +59,7 @@ const Layout = () => {
                 </Routes>
                 {isAuthenticated && (
                     <Box sx={{ marginLeft: (theme) => theme.spacing(2.5) }}>
-                        <Chat />
+                        <ChatContainer />
                     </Box>
                 )}
             </Box>
