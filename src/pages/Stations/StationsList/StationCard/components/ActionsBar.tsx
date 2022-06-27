@@ -7,7 +7,12 @@ import withContext from 'hoc/withContext';
 import { Station } from 'types';
 import StationContext from '../../StationContext';
 
-const ActionsBar = ({ id }: Pick<Station, 'id'>) => (
+interface Props extends Pick<Station, 'id'> {
+    onSettingsToggle: () => void;
+    settingsActive: boolean;
+}
+
+const ActionsBar = ({ id, settingsActive, onSettingsToggle }: Props) => (
     <Box
         sx={{
             display: 'flex',
@@ -16,9 +21,19 @@ const ActionsBar = ({ id }: Pick<Station, 'id'>) => (
             paddingRight: (theme) => theme.spacing(4),
         }}
     >
-        <IconButton onClick={() => console.log('list click, id:', id)}>
+        <IconButton
+            onClick={() => {
+                console.log('list click, id:', id);
+                onSettingsToggle();
+            }}
+        >
             <SettingsIcon
-                sx={{ color: (theme) => theme.palette.text.secondary }}
+                sx={{
+                    color: (theme) =>
+                        settingsActive
+                            ? theme.palette.text.primary
+                            : theme.palette.text.secondary,
+                }}
             />
         </IconButton>
         <IconButton
@@ -45,4 +60,4 @@ ActionsBar.propTypes = {
     id: PropTypes.number.isRequired,
 };
 
-export default withContext(StationContext)(ActionsBar);
+export default withContext<Props, Station>(StationContext)(ActionsBar);

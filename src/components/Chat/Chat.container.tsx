@@ -26,8 +26,8 @@ const ChatContainer = () => {
             chatsLoading={chatsLoading}
             chatsLoaded={chatsLoaded}
             chatsError={chatsError}
-            station={station}
-            driver={driver}
+            station={station || []}
+            driver={driver || []}
         />
     );
 };

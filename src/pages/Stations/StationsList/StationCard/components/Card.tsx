@@ -7,7 +7,7 @@ import { Station, Sx } from 'types';
 import StationContext from '../../StationContext';
 
 interface Props {
-    type: 'top' | 'bottom';
+    type: 'top' | 'bottom' | 'middle';
     children: ReactNode;
     sx?: Sx;
 }

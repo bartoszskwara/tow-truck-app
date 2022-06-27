@@ -111,6 +111,27 @@ export default (mode: PaletteMode = 'dark') => {
                     },
                 },
             },
+            MuiTabs: {
+                styleOverrides: {
+                    root: {
+                        minHeight: 0,
+                    },
+                },
+            },
+            MuiTab: {
+                styleOverrides: {
+                    root: {
+                        padding: theme.spacing(1),
+                        minHeight: 0,
+                        '&.Mui-selected': {
+                            color: theme.palette.text.primary,
+                            '& .MuiTypography-root': {
+                                fontFamily: 'OpenSansBold',
+                            },
+                        },
+                    },
+                },
+            },
         },
     });
 };

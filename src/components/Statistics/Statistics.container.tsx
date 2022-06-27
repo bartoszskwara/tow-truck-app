@@ -21,7 +21,7 @@ const Statistics = ({ fetchData, ...rest }: Props) => {
 };
 
 Statistics.propTypes = {
-    fetchData: PropTypes.func.isRequired,
+    fetchData: PropTypes.func,
     ...StatisticsViewPropTypes,
 };
 

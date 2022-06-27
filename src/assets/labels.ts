@@ -258,6 +258,13 @@ const labels: Label[] = [
             en: 'stations',
         },
     },
+    {
+        name: 'History',
+        translations: {
+            pl: 'Historia',
+            en: 'History',
+        },
+    },
 ];
 
 export default labels;
