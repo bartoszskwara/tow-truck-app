@@ -4,8 +4,8 @@ import Text, { LabelProps, LabelPropType } from 'components/Text';
 import withContext from 'hoc/withContext';
 import { AccidentStatusPropType, DistancePropType } from 'propTypes';
 import { Accident } from 'types';
+import getStatusColor from 'utilities/getStatusColor';
 import AccidentContext from '../../../AccidentContext';
-import getStatusColor from '../../../helpers/getStatusColor';
 
 interface Props {
     dateTimeLabel: LabelProps;

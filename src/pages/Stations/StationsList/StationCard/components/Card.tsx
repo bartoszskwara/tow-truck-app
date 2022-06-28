@@ -64,7 +64,7 @@ const Card = ({ color, type, children, sx }: PropsWithContext) => (
 
 Card.propTypes = {
     color: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['top', 'bottom'] as const).isRequired,
+    type: PropTypes.oneOf(['top', 'middle', 'bottom'] as const).isRequired,
     children: PropTypes.node,
     sx: SxPropType,
 };

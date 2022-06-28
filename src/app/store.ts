@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import chatReducer from '../components/Chat/chatSlice';
 import systemNotificationReducer from '../components/SystemNotification/store/systemNotificationSlice';
 import dashboardReducer from '../pages/Dashboard/store/dashboardSlice';
+import historyReducer from '../pages/Stations/StationsList/StationCard/components/SettingsPanel/History/store/historySlice';
 import stationsReducer from '../pages/Stations/store/stationsSlice';
 import authReducer from './Auth/authSlice';
 import themeReducer from './Theme/themeSlice';
@@ -17,6 +18,7 @@ export const store = configureStore({
         chat: chatReducer,
         stations: stationsReducer,
         systemNotification: systemNotificationReducer,
+        history: historyReducer,
     },
 });
 

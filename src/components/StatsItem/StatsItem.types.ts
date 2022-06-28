@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { SxProps, Theme } from '@mui/material';
 import { SxPropType } from 'propTypes';
+import { Sx } from 'types';
 
 export interface StatsItemProps {
     title?: string | null;
     value?: string | ReactNode | null;
     sxProps?: {
-        root?: SxProps<Theme>;
-        value?: SxProps<Theme>;
-        title?: SxProps<Theme>;
+        root?: Sx;
+        value?: Sx;
+        title?: Sx;
     };
 }
 export const StatsItemPropTypes = PropTypes.shape({

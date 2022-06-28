@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
 import { Address } from './Address';
 import { OnlineStatus } from './OnlineStatus';
+import { Person } from './Person';
 import { Stats } from './Stats';
-
-export const Person = PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string,
-});
 
 export const Station = PropTypes.shape({
     id: PropTypes.number.isRequired,

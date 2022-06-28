@@ -84,6 +84,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'Driver',
+        translations: {
+            pl: 'Kierowca',
+            en: 'Driver',
+        },
+    },
+    {
         name: 'MostRecentAccident',
         translations: {
             pl: 'Ostatni wypadek',
@@ -245,6 +252,13 @@ const labels: Label[] = [
         },
     },
     {
+        name: 'FetchingHistoryFailed',
+        translations: {
+            pl: 'Ładowanie historii zakończone niepowodzeniem',
+            en: 'Fetching history failed',
+        },
+    },
+    {
         name: 'Manager',
         translations: {
             pl: 'kierownik: {}',
@@ -263,6 +277,41 @@ const labels: Label[] = [
         translations: {
             pl: 'Historia',
             en: 'History',
+        },
+    },
+    {
+        name: 'Status',
+        translations: {
+            pl: 'Status',
+            en: 'Status',
+        },
+    },
+    {
+        name: 'Mileage',
+        translations: {
+            pl: 'Odległość',
+            en: 'Mileage',
+        },
+    },
+    {
+        name: 'Duration',
+        translations: {
+            pl: 'Czas trwania',
+            en: 'Duration',
+        },
+    },
+    {
+        name: 'DurationValueHoursMinutes',
+        translations: {
+            pl: '{}g {}m',
+            en: '{}h {}m',
+        },
+    },
+    {
+        name: 'DurationValueMinutes',
+        translations: {
+            pl: '{}m',
+            en: '{}m',
         },
     },
 ];

@@ -3,7 +3,7 @@ import Text, { LabelProps, LabelPropType, Variable } from 'components/Text';
 import { LabelVariablePropType } from 'components/Text/Text.types';
 import { SxPropType } from 'propTypes';
 import { AccidentStatus, Sx } from 'types';
-import getStatusColor from '../../../helpers/getStatusColor';
+import getStatusColor from 'utilities/getStatusColor';
 
 interface Props {
     headerLabel: LabelProps;

@@ -132,6 +132,28 @@ export default (mode: PaletteMode = 'dark') => {
                     },
                 },
             },
+            MuiList: {
+                styleOverrides: {
+                    root: {
+                        paddingTop: 0,
+                        paddingBottom: 0,
+                    },
+                },
+            },
+            MuiListItem: {
+                styleOverrides: {
+                    root: {
+                        padding: theme.spacing(1),
+                    },
+                },
+            },
+            MuiListItemText: {
+                styleOverrides: {
+                    root: {
+                        margin: 0,
+                    },
+                },
+            }
         },
     });
 };

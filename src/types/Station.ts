@@ -1,12 +1,8 @@
 import { Address } from './Address';
 import { OnlineStatus } from './OnlineStatus';
+import { Person } from './Person';
 import { Stats } from './Stats';
 
-type Person = {
-    id: number;
-    name: string;
-    avatar?: string | null;
-};
 export type Station = {
     id: number;
     name: string;

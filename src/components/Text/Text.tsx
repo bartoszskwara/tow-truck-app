@@ -32,7 +32,7 @@ const Text = ({ text, name, variables, ...rest }: TextProps) => {
                 {variables?.[idx]}
             </span>
         ));
-    }, [language, name, variables]);
+    }, [language, name, variables, text]);
     return (
         <Typography variant="regular" {...rest}>
             {translation || text}
