@@ -30,7 +30,11 @@ const HistoryView = ({ history, current, onSelect, loading }: Props) => (
                     onSelect={onSelect}
                     sx={{ flex: 1 }}
                 />
-                <Divider orientation="vertical" flexItem sx={{ marginX: theme => theme.spacing(1) }}/>
+                <Divider
+                    orientation="vertical"
+                    flexItem
+                    sx={{ marginX: (theme) => theme.spacing(1) }}
+                />
                 {current && <HistoryDetails data={current} sx={{ flex: 1 }} />}
             </>
         )}
