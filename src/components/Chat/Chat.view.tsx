@@ -4,6 +4,7 @@ import { ChatItemPropType } from '../../propTypes';
 import { ChatItem } from '../../types';
 import ChatLoader from './ChatLoader';
 import List from './List';
+import _ from 'lodash';
 
 interface Props {
     chatsError: boolean;
@@ -33,7 +34,7 @@ const ChatView = ({
                 {chatsLoading && <ChatLoader />}
                 {chatsLoaded && (
                     <>
-                        {station && (
+                        {!_.isEmpty(station) && (
                             <List
                                 items={station}
                                 label={{
@@ -45,7 +46,7 @@ const ChatView = ({
                                 }}
                             />
                         )}
-                        {driver && (
+                        {!_.isEmpty(driver) && (
                             <List
                                 items={driver}
                                 label={{
