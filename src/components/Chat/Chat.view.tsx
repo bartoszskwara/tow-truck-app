@@ -46,7 +46,7 @@ const ChatView = ({
                                 }}
                             />
                         )}
-                        {driver && (
+                        {!_.isEmpty(driver) && (
                             <List
                                 items={driver}
                                 label={{
